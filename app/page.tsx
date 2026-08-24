@@ -102,44 +102,104 @@ export default function Business() {
       </header>
 
       {/* ═══ 1 · cinematic hero ═══ */}
-      <section className={styles.hero}>
-        <video className={styles.heroVideo} autoPlay muted loop playsInline preload="auto" aria-hidden="true">
-          <source src="/relay-hero-1080.mp4" type="video/mp4" />
-        </video>
-        {/* Left only. Darkening the whole frame would flatten everything the video does. */}
-        <div className={styles.heroScrim} />
-        <div className={styles.heroFoot} />
+<section className={styles.hero}>
+  <video
+    className={styles.heroVideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    aria-hidden="true"
+  >
+    <source src="/relay-hero-4k.mp4" type="video/mp4" />
+  </video>
 
-        <div className={styles.heroInner}>
-          <span className={styles.eyebrow}>Relay for production AI</span>
-          <h1 className={styles.h1}>
-            Same models.
-            <br />
-            <span>Lower API price.</span>
-          </h1>
-          <p className={styles.heroLede}>
-            Keep the AI stack you already use. Relay changes the economics underneath it,
-            through one OpenAI-compatible API.
-          </p>
-          <div className={styles.ctaRow}>
-            <a href="#benchmarks" className={styles.ctaGold}>See the benchmarks</a>
-            <a href={DASHBOARD} className={styles.ctaGhost} target="_blank" rel="noopener noreferrer">Try Relay free</a>
-          </div>
-        </div>
+  <div className={styles.heroScrim} />
+  <div className={styles.heroFoot} />
 
-        {/* The proof belongs to the hero, not to a section under it. Sitting over the
-            lower third and overhanging the next section makes the evidence feel like part
-            of the claim rather than a separate band of metrics. */}
-        <div className={styles.proofCards}>
-          {OUTCOMES.map((o) => (
-            <div key={o.tag} className={styles.proofCard}>
-              <span className={styles.proofTag}>{o.tag}</span>
-              <span className={styles.proofFigure}>{o.figure}</span>
-              <span className={styles.proofDetail}>{o.detail}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+  {/* Main hero message */}
+  <div className={styles.heroInner}>
+    <span className={styles.eyebrow}>
+      Relay for production AI
+    </span>
+
+    <h1 className={styles.h1}>
+      Same models.
+      <br />
+      <span>Lower API price.</span>
+    </h1>
+
+    <p className={styles.heroLede}>
+      Keep the AI stack you already use. Relay changes the economics
+      underneath it, through one OpenAI-compatible API.
+    </p>
+
+    <div className={styles.ctaRow}>
+      <a
+        href="#benchmarks"
+        className={styles.ctaGold}
+      >
+        See the benchmarks
+      </a>
+
+      <a
+        href={DASHBOARD}
+        className={styles.ctaGhost}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Try Relay free
+      </a>
+    </div>
+  </div>
+
+  {/* Proof cards
+      Desktop: sit beside the hero copy.
+      Mobile: CSS moves them beneath the CTAs into a horizontal swipe row.
+  */}
+  <div
+    className={styles.proofCards}
+    aria-label="Relay benchmark highlights"
+  >
+    <div className={styles.proofCard}>
+      <span className={styles.proofTag}>Agents</span>
+
+      <span className={styles.proofFigure}>
+        91%
+      </span>
+
+      <span className={styles.proofDetail}>
+        lower cost per successful AI agent task,
+        measured against a frontier model
+      </span>
+    </div>
+
+    <div className={styles.proofCard}>
+      <span className={styles.proofTag}>Voice</span>
+
+      <span className={styles.proofFigure}>
+        51%
+      </span>
+
+      <span className={styles.proofDetail}>
+        lower unit cost per 1,000 generated characters
+      </span>
+    </div>
+
+    <div className={styles.proofCard}>
+      <span className={styles.proofTag}>Media</span>
+
+      <span className={styles.proofFigure}>
+        53%
+      </span>
+
+      <span className={styles.proofDetail}>
+        lower route cost on the same model
+      </span>
+    </div>
+  </div>
+</section>
 
       {/* ═══ 3 · product module ═══ */}
       <section className={styles.deep}>
