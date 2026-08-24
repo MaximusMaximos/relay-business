@@ -1025,4 +1025,130 @@ html { scroll-padding-top: 80px; }
     max-width: none;
     font-size: 0.73rem;
   }
+}/* ═══ media economics ═══
+   Slide 07's arrangement: saving cards left, sample outputs right, routes table below.
+   Append to app/page.module.css. */
+
+.mediaBlock {
+  margin-top: 44px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.mediaTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 34px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.mediaSavings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Bordered rather than filled, so three of them sit as a set without competing with the
+   large editorial figures above. */
+.mediaSaving {
+  padding: 16px 16px 18px;
+  border: 1px solid rgba(255, 188, 54, 0.22);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 188, 54, 0.045), transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mediaSavingLabel {
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+.mediaSavingFigure {
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: var(--gold);
+}
+.mediaSavingUnit {
+  font-size: 0.66rem;
+  line-height: 1.35;
+  color: var(--dim);
+}
+
+.mediaSamples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+/* Fixed aspect so three stills of different dimensions still line up. */
+.mediaSample {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .mediaTop { grid-template-columns: 1fr; gap: 22px; }
+  .mediaSavings { gap: 8px; }
+  .mediaSaving { padding: 12px 12px 14px; }
+  .mediaSavingFigure { font-size: 1.25rem; }
+  .mediaSavingLabel { font-size: 0.64rem; }
+  .mediaSavingUnit { font-size: 0.6rem; }
+  .mediaBlock { margin-top: 30px; padding-top: 26px; }
+}
+
+/* ═══ media routes table ═══
+   The .table and .tdSave classes were removed at some point, so the markup was rendering
+   as unstyled HTML. Restored in the Relay idiom: thin rules rather than borders, the
+   saving column carrying the emphasis. */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table thead th {
+  text-align: left;
+  padding: 0 14px 12px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--lineSoft, #131a2c);
+  color: var(--muted);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover td { background: rgba(255, 188, 54, 0.02); }
+
+/* The column the reader is looking for. */
+.tdSave {
+  color: var(--gold) !important;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* First column names the route, so it reads as a label rather than data. */
+.table tbody td:first-child { color: var(--text); font-weight: 550; }
+
+@media (max-width: 900px) {
+  /* Five columns will not compress to a phone width without becoming unreadable, so the
+     table scrolls sideways instead. */
+  .table { display: block; overflow-x: auto; white-space: nowrap; font-size: 0.82rem; }
+  .table td, .table thead th { padding: 11px 12px; }
 }

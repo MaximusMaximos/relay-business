@@ -48,7 +48,14 @@ const AGENT_BARS = [
 const SAVINGS = [
   { figure: "$180K", label: "Agents", detail: "250M successful tasks a year, measured against Sonnet." },
   { figure: "$255K", label: "Voice", detail: "5B generated characters a year, against list pricing." },
-  { figure: "$155K", label: "Media", detail: "5M image renders a year, same model, lower route cost." },
+  { figure: "$155K", label: "Media", detail: "5M image renders a year. Video routes save separately, below." },
+];
+
+const MEDIA_ROUTES = [
+  { route: "Gemini image", comparator: "$0.077 / image", relay: "$0.046 / image", scale: "5M images", saving: "$155K" },
+  { route: "HappyHorse 1.1", comparator: "$0.168 / sec", relay: "$0.1512 / sec", scale: "1M x 5 sec", saving: "$84K" },
+  { route: "SeeDance 2.5", comparator: "$21.40 / 1M video tokens", relay: "$10.01 / 1M video tokens", scale: "Route-level", saving: "53% less" },
+  { route: "SeeDance Mini", comparator: "$7.00 / 1M tokens", relay: "$3.22 / 1M tokens", scale: "Route-level", saving: "54% less" },
 ];
 
 const MECHANISMS = [
@@ -344,6 +351,56 @@ export default function Business() {
             invoices. Pricing advantages vary by model and provider availability, and Relay
             only claims savings where current pricing supports them.
           </p>
+
+          {/* Slide 07's arrangement: saving cards, sample outputs beside them, routes table
+              below. The samples show what the routes produce; the table is the evidence for
+              the savings. */}
+          <div className={styles.mediaBlock}>
+            <div className={styles.mediaTop}>
+              <div className={styles.mediaSavings}>
+                <div className={styles.mediaSaving}>
+                  <span className={styles.mediaSavingLabel}>Image, at 5M renders</span>
+                  <span className={styles.mediaSavingFigure}>$155K</span>
+                  <span className={styles.mediaSavingUnit}>$0.077 to $0.046 per image</span>
+                </div>
+                <div className={styles.mediaSaving}>
+                  <span className={styles.mediaSavingLabel}>Video, at 1M renders</span>
+                  <span className={styles.mediaSavingFigure}>$84K</span>
+                  <span className={styles.mediaSavingUnit}>5 sec HappyHorse route</span>
+                </div>
+                <div className={styles.mediaSaving}>
+                  <span className={styles.mediaSavingLabel}>SeeDance 2.5</span>
+                  <span className={styles.mediaSavingFigure}>53%</span>
+                  <span className={styles.mediaSavingUnit}>$21.40 to $10.01 per 1M video tokens</span>
+                </div>
+              </div>
+
+              <div className={styles.mediaSamples}>
+                {/* eslint-disable @next/next/no-img-element */}
+                <img src="/image-sample.png" alt="" className={styles.mediaSample} />
+                <img src="/video-sample1.png" alt="" className={styles.mediaSample} />
+                <img src="/video-sample2.png" alt="" className={styles.mediaSample} />
+                {/* eslint-enable @next/next/no-img-element */}
+              </div>
+            </div>
+
+            <table className={styles.table}>
+              <thead>
+                <tr><th>Media route</th><th>Comparator</th><th>Relay</th><th>Scale</th><th>Saving</th></tr>
+              </thead>
+              <tbody>
+                {MEDIA_ROUTES.map((r) => (
+                  <tr key={r.route}>
+                    <td>{r.route}</td>
+                    <td>{r.comparator}</td>
+                    <td>{r.relay}</td>
+                    <td>{r.scale}</td>
+                    <td className={styles.tdSave}>{r.saving}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
