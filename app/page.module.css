@@ -399,7 +399,7 @@ html { scroll-padding-top: 80px; }
   display: grid;
   grid-template-columns: minmax(0, 5.8fr) minmax(0, 4.2fr);
   gap: 38px;
-  align-items: start;
+  align-items: center;
 }
 
 .chart {
@@ -413,7 +413,7 @@ html { scroll-padding-top: 80px; }
   grid-template-columns: repeat(5, 1fr);
   gap: 14px;
   align-items: end;
-  height: 168px;
+  height: 300px;
 }
 
 .barCol {
