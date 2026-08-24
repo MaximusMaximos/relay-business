@@ -112,7 +112,7 @@ export default function Business() {
     preload="auto"
     aria-hidden="true"
   >
-    <source src="/relay-hero-4k.mp4" type="video/mp4" />
+    <source src="/relay-hero-1080.mp4" type="video/mp4" />
   </video>
 
   <div className={styles.heroScrim} />
