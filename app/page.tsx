@@ -70,7 +70,7 @@ function BenchmarkChart() {
           </div>
         ))}
       </div>
-      <span className={styles.chartAxis}>Cost per 1,000 successful tasks · lower is better</span>
+      <span className={styles.chartAxis}>Cost per 1,000 successful AI agent tasks · lower is better</span>
     </div>
   );
 }
@@ -231,32 +231,37 @@ export default function Business() {
       <BenchmarkChart />
 
       <div className={styles.benchAside}>
-        <p className={styles.benchNote}>
-          Cost per <strong>successful AI agent task</strong>, not per API request.
-  Failed attempts are paid for and counted. The comparison holds because
-  measured pass rates across these models sat within a few points of each
-  other on the same agent workload.
-        </p>
+     <p className={styles.benchNote}>
+  Cost per <strong>successful AI agent task</strong>, not per API request.
+  Failed attempts are paid for and counted. DeepSeek and Sonnet achieved
+  virtually identical measured pass rates on the same workload:
+  98.4% and 98.0%.
+</p>
 
-        <div className={styles.benchInsight}>
+       <div className={styles.benchInsight}>
   <span className={styles.benchInsightLabel}>
     Token price isn&rsquo;t task price
   </span>
 
   <p>
-    GLM carried a lower published token price than Sonnet, yet came out
-    more expensive per successful AI agent task on the measured workload.
+    GLM had a lower published token price than Sonnet, yet cost roughly
+    twice as much per successful AI agent task: $1.59 versus $0.79.
   </p>
 
   <p>
-    The reason was token consumption. GLM generated substantially more
-    output-token volume while completing the same class of agent work,
-    enough to erase its lower per-token price.
+    The difference was verbosity, not quality. GLM produced an average of
+    375 output tokens per task versus Sonnet&rsquo;s 56, nearly 7&times;
+    as many, while their measured pass rates were essentially identical.
+  </p>
+
+  <p>
+    96% of GLM&rsquo;s output tokens were reasoning tokens. Sonnet used none.
+    Those extra tokens still carry a cost.
   </p>
 
   <strong>
-    Price per million tokens tells you what a token costs. It
-    doesn&rsquo;t tell you what the agent task costs.
+    Price per million tokens tells you what a token costs.
+    It doesn&rsquo;t tell you what the agent task costs.
   </strong>
 </div>
 
