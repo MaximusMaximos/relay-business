@@ -1,150 +1,749 @@
+/* app/page.module.css — business.relaygpu.com
+ *
+ * Relay's own identity throughout. Navy and blue-black, cobalt atmospheric light, amber as
+ * energy rather than decoration.
+ *
+ * The previous version escaped flat black by switching to ivory, which escaped Relay along
+ * with it. Contrast here comes from DEPTH and ILLUMINATION instead: a deep section, then
+ * one lit from above with cobalt, then a raised navy, then deep again. Same family, four
+ * different rooms.
+ */
+
+html { scroll-padding-top: 80px; }
+
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
+  --deep: #060810;
+  --navy: #0a0f1e;
+  --navyRaised: #0d1426;
+  --cobalt: #2563eb;
+  --cobaltSoft: rgba(37, 99, 235, 0.14);
+  --gold: #ffbc36;
+  --goldDeep: #c8901f;
+  --text: #e8eeff;
+  --muted: #98a1bb;
+  --dim: #626c88;
+  --line: #182036;
+  --lineSoft: #131a2c;
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  background: var(--deep);
+  color: var(--text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+/* ═══ type ═══ */
+
+.eyebrow {
+  display: block;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: var(--gold);
+  margin-bottom: 16px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+  line-height: 0.99;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+.h1 span {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Safari needs a painted box for background-clip: text. */
+  display: inline-block;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+.h2 span {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Safari needs a painted box for background-clip: text. */
+  display: inline-block;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.h2Big {
+  margin: 0 0 18px;
+  font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+.h2Big span {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Safari needs a painted box for background-clip: text. */
+  display: inline-block;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.lede { margin: 0; font-size: 1.04rem; line-height: 1.55; color: var(--muted); max-width: 56ch; }
+.headBlock { max-width: 62ch; margin-bottom: 24px; }
+
+.plainList { list-style: none; margin: 20px 0 0; padding: 0; }
+.plainList li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.98rem;
+  color: var(--text);
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
+/* ═══ buttons ═══ */
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
-
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
+.ctaGold, .ctaGhost {
+  display: inline-block;
+  padding: 13px 28px;
+  font-size: 0.9rem;
+  text-decoration: none;
   border-radius: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.ctaGold { background: var(--gold); color: #120e03; font-weight: 650; }
+.ctaGold:hover { transform: translateY(-1px); box-shadow: 0 10px 32px rgba(255, 188, 54, 0.26); }
+.ctaGhost { border: 1px solid rgba(232, 238, 255, 0.2); color: var(--text); font-weight: 500; }
+.ctaGhost:hover { border-color: var(--gold); background: rgba(255, 188, 54, 0.06); }
+
+.ctaRow { display: flex; gap: 14px; flex-wrap: wrap; }
+
+
+/* ═══ header ═══ */
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 16px 0;
+  background: rgba(6, 8, 16, 0.34);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border-bottom: 1px solid rgba(232, 238, 255, 0.04);
+}
+.headerRow { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+.logo { display: flex; align-items: center; text-decoration: none; }
+
+/* Mark only, no wordmark. Height-constrained so it scales cleanly whatever the SVG's
+   intrinsic proportions. */
+.logoMark {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.headerCta {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(100deg, #ffd77a, var(--gold) 62%, #eda31f);
+  color: #17120a;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.headerCta:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+/* ═══ environments ═══ */
+
+.deep { background: var(--deep); padding: 56px 0; }
+.hero + .deep { padding-top: 92px; }
+.deepOpen { background: var(--deep); padding: 56px 0 0; }
+.navy { background: var(--navy); padding: 56px 0; }
+.navy + .navy { padding-top: 20px; }
+/* Same background means the same passage. */
+.deep + .deep { padding-top: 20px; }
+
+/* Lit from above with cobalt rather than switched to a pale background. Same family, a
+   different room. */
+
+
+/* ═══ 1 · hero ═══ */
+
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  /* visible, not hidden: the cards deliberately overhang the section boundary */
+  overflow: visible;
+  background: var(--deep);
+  padding-top: 104px;
+  padding-bottom: 96px;
+}
+.heroVideo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    var(--deep) 0%,
+    rgba(6, 8, 16, 0.95) 30%,
+    rgba(6, 8, 16, 0.62) 55%,
+    rgba(6, 8, 16, 0.12) 78%,
+    transparent 100%
+  );
+}
+.heroFoot {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 26%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--navyRaised) 96%);
+}
+
+.heroInner { position: relative; z-index: 2; max-width: min(37rem, 52vw); margin-left: clamp(32px, 7vw, 132px); }
+.heroLede { margin: 0 0 30px; font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.56; color: var(--muted); max-width: 33ch; }
+
+/* ═══ hero proof cards ═══ */
+
+/* Tall cards occupying the lower third of the hero, with the video blurred through them.
+   backdrop-filter is what does the work: the routing graphic behind stays visible as
+   colour and movement rather than being covered over, which is what stops them reading as
+   grey boxes sitting on a video. */
+.proofCards {
+  position: relative;
+  z-index: 3;
+  max-width: 1180px;
+  margin: 0 auto -52px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.proofCard {
+  position: relative;
+  min-height: 232px;
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 238, 255, 0.1);
+  overflow: hidden;
+  /* Light enough to let the video through, dark enough to hold text over any frame. */
+  background: rgba(8, 12, 24, 0.42);
+  backdrop-filter: blur(22px) saturate(1.15);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* The video is dark at the foot of the frame, so a gradient inside the card guarantees the
+   detail line is readable whatever is behind it, without dimming the whole card. */
+.proofCard::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 62%;
+  background: linear-gradient(180deg, transparent, rgba(6, 9, 20, 0.72));
+  pointer-events: none;
+}
+
+.proofCard > * { position: relative; z-index: 1; }
+
+/* Pill label, as in the reference, but Relay's amber rather than their pink. */
+.proofTag {
+  align-self: flex-start;
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 188, 54, 0.28);
+  background: rgba(255, 188, 54, 0.08);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+}
+
+/* Pushed to the foot by margin-top auto, so the three cards align on their figures
+   regardless of how many lines the detail runs to. */
+.proofFigure {
+  margin-top: auto;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: var(--white, #fff);
+}
+
+.proofDetail {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(232, 238, 255, 0.72);
+  max-width: 30ch;
+}
+
+/* ═══ 3 · product module ═══ */
+
+.module {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(232, 238, 255, 0.08);
+  background: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 238, 255, 0.09),
+    0 18px 40px rgba(0, 0, 0, 0.34);
+}
+.moduleCopy { padding: 40px 42px; display: flex; flex-direction: column; justify-content: center; }
+
+/* Product media is intentionally simple here. The hero already explains the routing story. */
+.moduleMedia {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #07101f;
+}
+.moduleVideo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  display: block;
+}
+
+/* ═══ 4 · benchmarks ═══ */
+
+.benchTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.benchHead { max-width: 34ch; }
+.benchHead .h2 { margin-bottom: 10px; }
+
+.versus {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+}
+.versusSide, .versusEnd { display: flex; flex-direction: column; gap: 4px; }
+.versusGold, .versusPlain {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+.versusGold { color: var(--gold); }
+.versusPlain { color: var(--text); }
+.versusLabel { font-size: 0.8rem; color: var(--dim); max-width: 18ch; line-height: 1.5; }
+.versusVs {
+  font-size: 0.8rem;
+  color: var(--dim);
+  align-self: flex-start;
+  padding-top: 0.5em;
+}
+
+.benchLayout { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 4fr); gap: 34px; align-items: start; }
+
+.chart { display: flex; flex-direction: column; gap: 12px; }
+.bars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; align-items: end; height: 168px; }
+.barCol { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 11px; height: 100%; }
+.barValue { font-size: 0.87rem; color: var(--dim); font-variant-numeric: tabular-nums; }
+.barValueBest { font-size: 1.08rem; font-weight: 700; color: var(--gold); font-variant-numeric: tabular-nums; }
+.bar { width: 100%; background: rgba(232, 238, 255, 0.08); border-radius: 3px 3px 0 0; min-height: 4px; }
+.barBest { background: linear-gradient(180deg, var(--gold), var(--goldDeep)); }
+.barLabel { font-size: 0.82rem; color: var(--dim); }
+.chartAxis { font-size: 0.8rem; color: var(--dim); }
+
+.benchAside { display: flex; flex-direction: column; gap: 10px; }
+.benchNote { margin: 0; padding-left: 20px; border-left: 2px solid var(--gold); font-size: 0.97rem; line-height: 1.62; color: var(--muted); }
+.benchNote strong { color: var(--text); }
+
+.benchStats {
+  display: flex;
+  gap: 28px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.benchStat { display: flex; flex-direction: column; gap: 3px; }
+.benchStatFigure {
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+}
+.benchStatLabel {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--dim);
+  max-width: 18ch;
+}
+
+/* ═══ 6 · base_url ═══ */
+
+.split { display: grid; grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr); gap: 42px; align-items: center; }
+
+.codeWrap { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #070b16; }
+.codeBar { display: flex; align-items: center; gap: 7px; padding: 13px 18px; border-bottom: 1px solid var(--line); }
+.codeDot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.codeName { margin-left: 10px; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+.code {
+  margin: 0;
+  padding: 22px 22px;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.94rem;
+  line-height: 1.9;
+  color: var(--text);
+  overflow-x: auto;
+}
+
+/* ═══ 7 · savings ═══ */
+
+.savings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
+.saving { display: flex; flex-direction: column; gap: 10px; }
+.savingFigure {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 0.93;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  color: var(--text);
+}
+.savingLabel { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--gold); }
+.savingDetail { margin: 12px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.9rem; line-height: 1.6; color: var(--dim); }
+
+.footnote { margin: 28px 0 0; font-size: 0.85rem; line-height: 1.64; color: var(--dim); max-width: 84ch; }
+
+/* ═══ 8 · mechanism ═══ */
+
+.flow { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 42px; align-items: center; }
+.flowList { display: flex; flex-direction: column; }
+.mech { display: grid; grid-template-columns: auto 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); }
+.mech:last-child { border-bottom: 1px solid var(--line); }
+.mechNum { font-size: 0.76rem; letter-spacing: 0.16em; color: var(--gold); padding-top: 4px; }
+.mechTitle { margin: 0 0 8px; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.02em; }
+.mechBody { margin: 0; font-size: 0.93rem; line-height: 1.6; color: var(--muted); }
+
+.flowChain { display: flex; flex-direction: column; align-items: center; }
+.chainNode {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.015);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.chainRelay {
+  border-color: rgba(255, 188, 54, 0.32);
+  background: rgba(255, 188, 54, 0.05);
+  box-shadow: 0 0 40px rgba(255, 188, 54, 0.07);
+}
+.chainName { font-size: 1rem; font-weight: 650; color: var(--text); }
+.chainSub { font-size: 0.8rem; color: var(--dim); }
+.chainLine { width: 1px; height: 24px; background: linear-gradient(180deg, rgba(255, 188, 54, 0.5), rgba(255, 188, 54, 0.1)); }
+
+/* ═══ 9 · credits ═══ */
+
+.credits {
+  background:
+    radial-gradient(900px 460px at 50% 0%, rgba(37, 99, 235, 0.2), transparent 66%),
+    radial-gradient(700px 340px at 50% 100%, rgba(255, 188, 54, 0.06), transparent 70%),
+    var(--navyRaised);
+  padding: 52px 0;
+  border-top: 1px solid var(--lineSoft);
+  border-bottom: 1px solid var(--lineSoft);
+}
+/* The eyebrow belongs to the headline beneath it, not to the space above it. */
+.credits .eyebrow { margin-bottom: 12px; }
+.credits .h2Big { margin-bottom: 14px; }
+
+.creditsInner {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 34px 46px 32px;
+  text-align: center;
+  border-radius: 16px;
+  border: 1px solid rgba(232, 238, 255, 0.07);
+  background: linear-gradient(160deg, rgba(13, 20, 38, 0.6), rgba(8, 12, 24, 0.5));
+}
+.creditsStrong { margin: 0 0 10px; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.42; font-weight: 600; color: var(--text); }
+.creditsBody { margin: 0 auto 10px; max-width: 58ch; font-size: 0.94rem; line-height: 1.68; color: var(--muted); }
+.creditsKicker { margin: 0 auto 20px; max-width: 52ch; font-size: 0.94rem; line-height: 1.6; font-weight: 600; color: var(--text); }
+
+/* ═══ 10 · fork ═══ */
+
+.fork { display: grid; grid-template-columns: 1fr auto 1fr; gap: 36px; margin-bottom: 48px; }
+.forkPath { display: flex; flex-direction: column; }
+.forkLine { width: 1px; background: linear-gradient(180deg, transparent, var(--line) 20%, var(--line) 80%, transparent); }
+.forkQ { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--gold); margin-bottom: 12px; }
+.forkTitle { margin: 0 0 14px; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.16; letter-spacing: -0.035em; font-weight: 750; }
+.forkNote { margin: 0; font-size: 0.9rem; line-height: 1.62; color: var(--muted); }
+
+.converge { text-align: center; padding-top: 34px; border-top: 1px solid var(--line); }
+.steps { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 1rem; color: var(--muted); }
+.steps b { color: var(--gold); margin-right: 8px; font-weight: 700; }
+.stepArrow { width: 34px; height: 1px; background: var(--line); }
+.convergeNote { margin: 20px 0 0; font-size: 1rem; font-weight: 650; color: var(--text); }
+
+/* The page ends here now, so it needs an exit. Deliberately understated: the primary
+   action is the free credits above, and a second solid button would compete with it. */
+.convergeCta {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 26px;
+  border: 1px solid rgba(232, 238, 255, 0.18);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.convergeCta:hover { border-color: var(--gold); color: var(--text); }
+
+/* ═══ 11 · close ═══ */
+
+
+/* ═══ footer ═══ */
+
+/* The final frame rather than an administrative block: cobalt depth with an amber
+   afterglow settling at the bottom of the page. */
+.footer {
+  position: relative;
+  background: var(--navy);
+  padding: 56px 0 44px;
+  overflow: hidden;
+  border-top: 1px solid var(--lineSoft);
+}
+.footerGlow {
+  position: absolute;
+  inset: auto 0 -180px 0;
+  height: 340px;
+  background:
+    radial-gradient(620px 220px at 50% 100%, rgba(255, 188, 54, 0.13), transparent 70%),
+    radial-gradient(900px 300px at 50% 130%, rgba(37, 99, 235, 0.16), transparent 72%);
+  pointer-events: none;
+}
+.footerTop { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+.footerStatement { margin: 0 0 10px; font-size: clamp(1.05rem, 1.7vw, 1.4rem); letter-spacing: -0.035em; font-weight: 700; color: var(--text); }
+.footerStatement span {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Safari needs a painted box for background-clip: text. */
+  display: inline-block;
+}
+.footerPowered { margin: 0; font-size: 0.88rem; color: var(--dim); }
+.footerNav { display: flex; gap: 28px; }
+.footerNav a { font-size: 0.9rem; color: var(--muted); text-decoration: none; transition: color 0.15s ease; }
+.footerNav a:hover { color: var(--gold); }
+
+
+/* ═══ raised panel surface ═══
+   Matching relaygpu.com. The inset top highlight is the load-bearing part: it reads as
+   light catching a raised edge, which is what separates a panel from a drawn rectangle. */
+.moduleCopy,
+.codeWrap,
+.chainNode,
+.creditsInner {
+  background: linear-gradient(180deg, rgba(28, 38, 64, 0.55) 0%, rgba(11, 16, 30, 0.9) 100%);
+  border: 1px solid rgba(232, 238, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 238, 255, 0.09),
+    0 18px 40px rgba(0, 0, 0, 0.34);
+}
+
+/* The Relay node keeps its amber identity but gains the same lift. */
+.chainRelay {
+  background: linear-gradient(180deg, rgba(255, 188, 54, 0.09) 0%, rgba(255, 188, 54, 0.03) 100%) !important;
+  border-color: rgba(255, 188, 54, 0.28) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 214, 130, 0.16),
+    0 18px 44px rgba(0, 0, 0, 0.4),
+    0 0 44px rgba(255, 188, 54, 0.07) !important;
+}
+
+/* The hero cards keep their blur, since the video behind them is the point, but pick up
+   the same top edge so they belong to the same family. */
+.proofCard {
+  box-shadow:
+    inset 0 1px 0 rgba(232, 238, 255, 0.12),
+    0 22px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ═══ mobile ═══ */
+
+@media (max-width: 940px) {
+  .hero { height: auto; min-height: 0; padding: 100px 0 36px; }
+  .heroInner { max-width: none; margin-left: 24px; margin-right: 24px; }
+  /* Copy over video does not survive a narrow screen: the scrim covers the frame. */
+  .heroScrim { background: linear-gradient(180deg, rgba(6, 8, 16, 0.55) 0%, rgba(6, 8, 16, 0.86) 62%, rgba(6, 8, 16, 0.94) 100%); }
+
+  /* The cards stop overlapping and simply follow the hero. Overlaying a 390px column
+     turned them into a strip of one-character words beside the headline. */
+  .proofCards {
+    position: static;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+  }
+  .proofCard { min-height: 0; padding: 16px 18px; }
+  .proofFigure { margin-top: 12px; }
+  .hero + .deep { padding-top: 44px; }
+
+  .outcomes, .savings, .fork { grid-template-columns: 1fr; gap: 22px; }
+  .module, .benchLayout, .split, .flow { grid-template-columns: 1fr; gap: 24px; }
+  .moduleCopy { padding: 30px 24px; }
+  .versusEnd { margin-left: 0; }
+  .forkLine { display: none; }
+  .forkPath + .forkPath { padding-top: 24px; border-top: 1px solid var(--line); }
+
+  .deep, .navy, .credits { padding: 44px 0; }
+  .deepOpen { padding: 44px 0 0; }
+  .deep + .deep, .navy + .navy { padding-top: 20px; }
+}
+
+@media (max-width: 640px) {
+
+  /* Page gutter. 32px on a 390px screen loses a sixth of the width to margin. */
+  .wrap { padding: 0 20px; }
+  .proofCards { padding: 0 20px; }
+
+  .hero { padding: 88px 0 30px; }
+  .heroInner { margin-left: 20px; margin-right: 20px; }
+  .proofCards { padding: 0 20px; margin-top: 22px; gap: 8px; }
+  .header { padding: 12px 0; }
+  .logoMark { height: 26px; }
+  .headerCta { padding: 7px 14px; font-size: 0.78rem; }
+
+  /* Display type set for a 1400px canvas is oversized in a 350px column. */
+  .h1 { font-size: 2rem; letter-spacing: -0.035em; }
+  .h2, .h2Big { font-size: 1.4rem; letter-spacing: -0.03em; }
+  .heroLede { font-size: 0.94rem; margin-bottom: 28px; max-width: none; }
+  .lede { font-size: 0.92rem; }
+  .eyebrow { margin-bottom: 14px; letter-spacing: 0.2em; }
+  .headBlock { margin-bottom: 18px; }
+
+  /* Sections. Tight enough that scrolling reads as continuous rather than as a series of
+     screens with gaps between them. */
+  .deep, .navy, .credits { padding: 34px 0; }
+  .deepOpen { padding: 34px 0 0; }
+  .deep + .deep, .navy + .navy { padding-top: 14px; }
+
+  .proofCard { min-height: 0; padding: 14px 16px; }
+  .proofFigure { margin-top: 10px; font-size: 1.5rem; }
+  .proofDetail { margin-top: 5px; font-size: 0.78rem; }
+
+  /* The comparison stacks rather than wrapping awkwardly mid-row. */
+  .versus { gap: 14px; padding-bottom: 18px; margin-bottom: 18px; }
+  .versusGold, .versusPlain { font-size: 1.5rem; }
+  .versusVs { padding-top: 0; }
+  .bars { height: 140px; gap: 10px; }
+  .barLabel, .chartAxis { font-size: 0.74rem; }
+
+  .savings, .outcomes, .fork { gap: 18px; }
+  .savingFigure { font-size: 1.9rem; }
+  .module, .benchLayout, .split, .flow { gap: 20px; }
+  .moduleCopy { padding: 24px 20px; }
+  .code { padding: 20px 18px; font-size: 0.84rem; line-height: 1.7; }
+  .mech { padding: 14px 0; gap: 16px; }
+
+  .creditsInner { padding: 24px 20px; }
+  .creditsBody, .creditsKicker { font-size: 0.88rem; }
+  .converge { padding-top: 26px; }
+  .steps { gap: 12px; font-size: 0.9rem; }
+  .stepArrow { display: none; }
+
+  .footer { padding: 40px 0 32px; }
+  .footerTop { gap: 22px; }
+  .footerNav { gap: 18px; flex-wrap: wrap; }
+
+  /* Tables scroll rather than compressing to unreadable columns. */
+  .table { display: block; overflow-x: auto; white-space: nowrap; font-size: 0.86rem; }
+
+  .ctaGold, .ctaGhost { padding: 12px 22px; font-size: 0.88rem; }
+  .ctaRow { gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaGold:hover { transform: none; }
+}
+
+/* ═══ narrow screens: proof cards stack ═══ */
+@media (max-width: 900px) {
+  .proofCards {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    gap: 10px;
+    margin: 26px auto 0;
+    padding: 0 22px;
+    max-width: 640px;
+  }
+  .proofCard {
+    min-height: 0;
+    padding: 16px 18px;
+  }
+  .proofFigure { margin-top: 10px; font-size: 1.6rem; }
+  .proofDetail { margin-top: 6px; max-width: none; }
+  .hero + .deep { padding-top: 40px; }
+}
+
+/* ═══ narrow screens: benchmark stacks ═══ */
+@media (max-width: 900px) {
+  .benchTop {
+    display: block;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+  }
+  .benchHead { max-width: none; margin-bottom: 20px; }
+
+  /* The three figures sit in a row of their own beneath the headline, wrapping to two
+     lines rather than being squeezed into a column. */
+  .versus {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  /* Equal thirds so all three sit on one line at 500px, where each column has roughly
+     130px to work with. */
+  .versusSide, .versusEnd { flex: 1 1 0; min-width: 0; }
+  .versusGold, .versusPlain { font-size: 1.15rem; letter-spacing: -0.03em; }
+  .versusLabel { max-width: none; font-size: 0.7rem; line-height: 1.4; }
+  /* "against" is a connector, not a column: it takes only the width of the word. */
+  .versusVs { flex: 0 0 auto; padding-top: 0.35em; font-size: 0.72rem; }
+
+  .benchLayout { display: block; }
+  .chart { margin-bottom: 22px; }
+  .bars { height: 150px; gap: 8px; }
+  .barValue, .barValueBest { font-size: 0.78rem; }
+  .barLabel { font-size: 0.72rem; }
+  .benchStats { gap: 20px; }
 }
