@@ -190,59 +190,95 @@ export default function Business() {
         </div>
       </section>
 
-      {/* ═══ 4 · benchmarks ═══ */}
-      <section className={styles.navy} id="benchmarks">
-        <div className={styles.wrap}>
-          <div className={styles.benchTop}>
-            <div className={styles.benchHead}>
-              <h2 className={styles.h2}>Don&rsquo;t take our word for it.</h2>
-              <p className={styles.lede}>
-                See what the economics look like across real AI workloads.
-              </p>
-            </div>
+{/* ═══ 4 · benchmarks ═══ */}
+<section className={styles.navy} id="benchmarks">
+  <div className={styles.wrap}>
+    <div className={styles.benchTop}>
+      <div className={styles.benchHead}>
+        <h2 className={styles.h2}>Don&rsquo;t take our word for it.</h2>
+        <p className={styles.lede}>
+          See what the economics look like across real AI agent workloads.
+        </p>
+      </div>
 
-            <div className={styles.versus}>
-            <div className={styles.versusSide}>
-              <span className={styles.versusGold}>$0.07</span>
-              <span className={styles.versusLabel}>per 1,000 successful tasks</span>
-            </div>
-            <span className={styles.versusVs}>against</span>
-            <div className={styles.versusSide}>
-              <span className={styles.versusPlain}>$0.79</span>
-              <span className={styles.versusLabel}>same workload, frontier model</span>
-            </div>
-            <div className={styles.versusEnd}>
-                <span className={styles.versusGold}>91%</span>
-                <span className={styles.versusLabel}>lower in the measured comparison</span>
-              </div>
-            </div>
+      <div className={styles.versus}>
+        <div className={styles.versusSide}>
+          <span className={styles.versusGold}>$0.07</span>
+          <span className={styles.versusLabel}>
+            per 1,000 successful tasks
+          </span>
+        </div>
+
+        <span className={styles.versusVs}>against</span>
+
+        <div className={styles.versusSide}>
+          <span className={styles.versusPlain}>$0.79</span>
+          <span className={styles.versusLabel}>
+            same AI agent workload, frontier model
+          </span>
+        </div>
+
+        <div className={styles.versusEnd}>
+          <span className={styles.versusGold}>91%</span>
+          <span className={styles.versusLabel}>
+            lower in the measured comparison
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div className={styles.benchLayout}>
+      <BenchmarkChart />
+
+      <div className={styles.benchAside}>
+        <p className={styles.benchNote}>
+          Cost per <strong>successful AI agent task</strong>, not per API request.
+  Failed attempts are paid for and counted. The comparison holds because
+  measured pass rates across these models sat within a few points of each
+  other on the same agent workload.
+        </p>
+
+        <div className={styles.benchInsight}>
+  <span className={styles.benchInsightLabel}>
+    Token price isn&rsquo;t task price
+  </span>
+
+  <p>
+    GLM carried a lower published token price than Sonnet, yet came out
+    more expensive per successful AI agent task on the measured workload.
+  </p>
+
+  <p>
+    The reason was token consumption. GLM generated substantially more
+    output-token volume while completing the same class of agent work,
+    enough to erase its lower per-token price.
+  </p>
+
+  <strong>
+    Price per million tokens tells you what a token costs. It
+    doesn&rsquo;t tell you what the agent task costs.
+  </strong>
+</div>
+
+        <div className={styles.benchStats}>
+          <div className={styles.benchStat}>
+            <span className={styles.benchStatFigure}>&lt;1s</span>
+            <span className={styles.benchStatLabel}>
+              Direct mode latency
+            </span>
           </div>
 
-          <div className={styles.benchLayout}>
-            <BenchmarkChart />
-            <div className={styles.benchAside}>
-              {/* Cost per successful task is meaningless if the models are not completing
-                  the tasks, so the pass-rate point stays visible. */}
-              <p className={styles.benchNote}>
-                Cost per <strong>successful</strong> task, not per API request. Failed
-                attempts are paid for and counted. The comparison holds because measured
-                pass rates across these models sat within a few points of each other on the
-                same workload.
-              </p>
-              <div className={styles.benchStats}>
-                <div className={styles.benchStat}>
-                  <span className={styles.benchStatFigure}>&lt;1s</span>
-                  <span className={styles.benchStatLabel}>Direct mode latency</span>
-                </div>
-                <div className={styles.benchStat}>
-                  <span className={styles.benchStatFigure}>5</span>
-                  <span className={styles.benchStatLabel}>models, same workload and scoring</span>
-                </div>
-              </div>
-            </div>
+          <div className={styles.benchStat}>
+            <span className={styles.benchStatFigure}>5</span>
+            <span className={styles.benchStatLabel}>
+              models, same workload and scoring
+            </span>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ═══ 5 · base_url ═══ */}
       <section className={styles.navy}>
