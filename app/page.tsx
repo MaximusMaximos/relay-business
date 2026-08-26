@@ -299,11 +299,11 @@ export default function Business() {
       <BenchmarkChart />
 
       <div className={styles.benchAside}>
-     <p className={styles.benchNote}>
+<p className={styles.benchNote}>
   Cost per <strong>successful AI agent task</strong>, not per API request.
-  Failed attempts are paid for and counted. DeepSeek and Sonnet achieved
-  virtually identical measured pass rates on the same workload:
-  98.4% and 98.0%.
+  Total spend includes all model usage, including unsuccessful runs.
+  DeepSeek and Sonnet achieved virtually identical measured pass rates
+  on the same workload: 98.4% and 98.0%.
 </p>
 
        <div className={styles.benchInsight}>
