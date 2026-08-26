@@ -2172,6 +2172,7 @@ html { scroll-padding-top: 80px; }
 
 @media (max-width: 900px) {
   .entToggle { flex-wrap: wrap; gap: 10px; padding: 13px 16px; font-size: 0.86rem; }
+  .entToggleDot { display: none; }
   .entToggleAction { font-size: 0.82rem; }
   .entScale { grid-template-columns: 1fr; gap: 14px; }
   /* The arrow points right; with the columns stacked it points at nothing. */
