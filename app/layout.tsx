@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Geist_Mono } from "next/font/google";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import Analytics from "./Analytics";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -23,7 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${poppins.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <VercelAnalytics debug={process.env.NODE_ENV === "development"} />
+        <Analytics />
+      </body>
     </html>
   );
 }

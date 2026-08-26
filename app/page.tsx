@@ -91,11 +91,11 @@ export default function Business() {
         <div className={styles.wrap}>
           <div className={styles.headerRow}>
             {/* Straight back to the main site, as briefed. */}
-            <a href={RELAY_SITE} className={styles.logo} aria-label="Relay">
+            <a href={RELAY_SITE} className={styles.logo} aria-label="Relay" data-track="logo_relaygpu">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://relaygpu.com/logo.svg" alt="Relay" className={styles.logoMark} />
             </a>
-            <a href={DASHBOARD} className={styles.headerCta} target="_blank" rel="noopener noreferrer">
+            <a href={DASHBOARD} className={styles.headerCta} data-track="cta_try_free_header" target="_blank" rel="noopener noreferrer">
               Try Relay free
             </a>
           </div>
@@ -103,7 +103,7 @@ export default function Business() {
       </header>
 
       {/* ═══ 1 · cinematic hero ═══ */}
-<section className={styles.hero}>
+<section className={styles.hero} data-section="hero">
   <video
     className={styles.heroVideo}
     autoPlay
@@ -140,6 +140,7 @@ export default function Business() {
       <a
         href="#benchmarks"
         className={styles.ctaGold}
+        data-track="cta_see_benchmarks"
       >
         See the benchmarks
       </a>
@@ -147,6 +148,7 @@ export default function Business() {
       <a
         href={DASHBOARD}
         className={styles.ctaGhost}
+        data-track="cta_try_free_hero"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -203,7 +205,7 @@ export default function Business() {
 </section>
 
       {/* ═══ 3 · product module ═══ */}
-      <section className={styles.deep}>
+      <section className={styles.deep} data-section="product">
         <div className={styles.wrap}>
           <div className={styles.module}>
             <div className={styles.moduleCopy}>
@@ -259,7 +261,7 @@ export default function Business() {
       </section>
 
 {/* ═══ 4 · benchmarks ═══ */}
-<section className={styles.navy} id="benchmarks">
+<section className={styles.navy} id="benchmarks" data-section="benchmarks">
   <div className={styles.wrap}>
     <div className={styles.benchTop}>
       <div className={styles.benchHead}>
@@ -354,7 +356,7 @@ export default function Business() {
 </section>
 
       {/* ═══ 5 · base_url ═══ */}
-      <section className={styles.navy}>
+      <section className={styles.navy} data-section="base_url">
         <div className={styles.wrap}>
           <div className={styles.split}>
             <div>
@@ -387,7 +389,7 @@ export default function Business() {
       </section>
 
       {/* ═══ 6 · production savings ═══ */}
-      <section className={styles.deep}>
+      <section className={styles.deep} data-section="savings">
         <div className={styles.wrap}>
           <div className={styles.headBlock}>
             <h2 className={styles.h2}>At production scale, this compounds.</h2>
@@ -468,7 +470,7 @@ export default function Business() {
       </section>
 
       {/* ═══ 7 · why it costs less ═══ */}
-      <section className={styles.navy}>
+      <section className={styles.navy} data-section="mechanisms">
         <div className={styles.wrap}>
           <div className={styles.headBlock}>
             <h2 className={styles.h2}>How Relay lowers the price.</h2>
@@ -512,7 +514,7 @@ export default function Business() {
 
       {/* ═══ 8 · free credits ═══ */}
       {/* Cobalt-lit rather than a pale panel: distinguished by illumination, still Relay. */}
-      <section className={styles.credits}>
+      <section className={styles.credits} data-section="free_credits">
         <div className={styles.wrap}>
           <div className={styles.creditsInner}>
             <span className={styles.eyebrow}>Put Relay to the test</span>
@@ -529,12 +531,13 @@ export default function Business() {
             <p className={styles.creditsKicker}>
               If Relay wins, move the workloads that benefit. If it doesn&rsquo;t, don&rsquo;t.
             </p>
-            <a href={DASHBOARD} className={styles.ctaGold} target="_blank" rel="noopener noreferrer">
+            <a href={DASHBOARD} className={styles.ctaGold} data-track="cta_free_credits" target="_blank" rel="noopener noreferrer">
               Get free Relay credits
             </a>
             <a
               href="https://calendly.com/maximus-opengpu/free-relay-benchmark-we-match-beat-any-price"
               className={styles.creditsCall}
+              data-track="booking_intent_credits"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -545,7 +548,7 @@ export default function Business() {
       </section>
 
       {/* ═══ 9 · two ways in ═══ */}
-      <section className={styles.deep}>
+      <section className={styles.deep} data-section="two_ways">
         <div className={styles.wrap}>
           <div className={styles.fork}>
             <div className={styles.forkPath}>
@@ -577,7 +580,7 @@ export default function Business() {
               <span><b>3</b> You decide</span>
             </div>
             <p className={styles.convergeNote}>No forced migration.</p>
-            <a href={RELAY_SITE} className={styles.convergeCta}>
+            <a href={RELAY_SITE} className={styles.convergeCta} data-track="click_relaygpu">
               Visit relaygpu.com <span aria-hidden="true">&#8594;</span>
             </a>
           </div>
@@ -596,9 +599,9 @@ export default function Business() {
               <p className={styles.footerPowered}>Powered by OpenGPU</p>
             </div>
             <nav className={styles.footerNav}>
-              <a href={RELAY_SITE}>relaygpu.com</a>
-              <a href={DASHBOARD} target="_blank" rel="noopener noreferrer">Dashboard</a>
-              <a href="#benchmarks">Benchmarks</a>
+              <a href={RELAY_SITE} data-track="footer_relaygpu">relaygpu.com</a>
+              <a href={DASHBOARD} target="_blank" rel="noopener noreferrer" data-track="footer_dashboard">Dashboard</a>
+              <a href="#benchmarks" data-track="footer_benchmarks">Benchmarks</a>
             </nav>
           </div>
         </div>

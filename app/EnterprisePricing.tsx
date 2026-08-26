@@ -39,6 +39,7 @@ export default function EnterprisePricing() {
         type="button"
         className={`${styles.entToggle} ${open ? styles.entToggleOpen : ""}`}
         onClick={() => setOpen(!open)}
+        data-track="enterprise_pricing_opened"
         aria-expanded={open}
       >
         <span className={styles.entToggleDot} aria-hidden="true" />
@@ -100,6 +101,7 @@ export default function EnterprisePricing() {
           <a
             href="https://calendly.com/maximus-opengpu/free-relay-benchmark-we-match-beat-any-price"
             className={styles.entBook}
+            data-track="booking_intent_enterprise"
             target="_blank"
             rel="noopener noreferrer"
           >
