@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import EnterprisePricing from "./EnterprisePricing";
 import styles from "./page.module.css";
 
 // app/page.tsx — business.relaygpu.com
@@ -460,6 +461,8 @@ export default function Business() {
                 ))}
               </tbody>
             </table>
+
+            <EnterprisePricing />
           </div>
         </div>
       </section>
@@ -528,6 +531,14 @@ export default function Business() {
             </p>
             <a href={DASHBOARD} className={styles.ctaGold} target="_blank" rel="noopener noreferrer">
               Get free Relay credits
+            </a>
+            <a
+              href="https://calendly.com/maximus-opengpu/free-relay-benchmark-we-match-beat-any-price"
+              className={styles.creditsCall}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a call and we&rsquo;ll run it with you
             </a>
           </div>
         </div>
