@@ -70,34 +70,20 @@ export default function EnterprisePricing() {
               <span className={styles.entLadderBaseNote}>published price</span>
             </div>
 
-            <table className={styles.entLadderTable}>
+            <table className={styles.table}>
               <thead>
-                <tr>
-                  <th>Volume</th>
-                  {TIERS.map((t, i) => (
-                    <th key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
-                      {t.label}
-                    </th>
-                  ))}
-                </tr>
+                <tr><th>Volume</th><th>Rate</th><th>Saving</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Rate</td>
-                  {TIERS.map((t, i) => (
-                    <td key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
-                      ${t.price.toFixed(3)}
+                {TIERS.map((t, i) => (
+                  <tr key={t.label}>
+                    <td>{t.label}</td>
+                    <td>${t.price.toFixed(3)}</td>
+                    <td className={i === TIERS.length - 1 ? styles.tdSave : ""}>
+                      {pctBelow(t.price)}% lower
                     </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td>Saving</td>
-                  {TIERS.map((t, i) => (
-                    <td key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
-                      {pctBelow(t.price)}%
-                    </td>
-                  ))}
-                </tr>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

@@ -3514,3 +3514,74 @@ html { scroll-padding-top: 80px; }
    beneath them. Removing them, which also removes the last of the small-caps
    label pattern from the page. */
 .eyebrow, .heroEyebrow, .perfStripLabel, .entPanelLabel { display: none; }
+
+@media (max-width: 900px) {
+  /* Five columns will not fit a phone, and the ladder was not set to scroll the
+     way the other tables are, so the strongest tier ran off the edge. Scrolls
+     sideways with the label column pinned, so "Rate" and "Saving" stay visible
+     while the tiers move. */
+  .entLadderTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .entLadderTable th, .entLadderTable td { padding: 9px 12px; }
+  .entLadderTable th:first-child,
+  .entLadderTable td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--navyRaised);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Scrolling put the strongest tier off-screen, which is the wrong thing to
+     hide. On a phone the table stacks instead: one row per tier, so $100K+ at
+     86% is visible without any interaction. */
+  .entLadderTable { display: block; overflow: visible; white-space: normal; }
+  .entLadderTable thead { display: none; }
+  .entLadderTable tbody { display: block; }
+  .entLadderTable tr { display: block; }
+
+  /* The two data rows become a definition list: volume, rate, saving per tier.
+     Handled by the label column carrying the row name. */
+  .entLadderTable td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  .entLadderTable td:first-child {
+    position: static;
+    background: none;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--dim);
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
+}
+
+/* More room between columns. Three fields on a wide table left them bunched at
+   the left with empty space to the right. */
+.table td, .table thead th { padding-left: 22px; padding-right: 22px; }
+.table td:first-child, .table thead th:first-child { padding-left: 0; }
+.table td:last-child, .table thead th:last-child { padding-right: 0; text-align: right; }
+
+@media (max-width: 900px) {
+  .table td, .table thead th { padding-left: 14px; padding-right: 14px; }
+}
+
+/* The table was sizing to its content rather than its container, so three short
+   columns bunched at the left with empty space to the right. Padding could not
+   fix that: the table had to take the full width before the columns had room to
+   spread. */
+.entPanel .table { width: 100%; table-layout: fixed; }
+.entPanel .table th:first-child, .entPanel .table td:first-child { width: 42%; }
+.entPanel .table th:nth-child(2), .entPanel .table td:nth-child(2) { width: 28%; }
+.entPanel .table th:last-child, .entPanel .table td:last-child { width: 30%; text-align: right; }
