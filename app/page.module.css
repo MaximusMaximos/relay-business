@@ -3496,3 +3496,16 @@ html { scroll-padding-top: 80px; }
    division needed there. */
 .benchInsightMeta { border-top: none; padding-top: 0; margin-top: 10px; }
 .benchInsight > p:last-of-type { border-bottom: none; }
+
+/* The amber button has no border and the ghost has 1px, so their content boxes
+   differed and the labels centred at different heights. A transparent border on
+   the amber one equalises them without changing how it looks. */
+.ctaGold, .ctaGhost {
+  border-width: 1px;
+  border-style: solid;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ctaGold { border-color: transparent; }
