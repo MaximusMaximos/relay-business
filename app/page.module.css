@@ -3509,3 +3509,8 @@ html { scroll-padding-top: 80px; }
   justify-content: center;
 }
 .ctaGold { border-color: transparent; }
+
+/* The caps eyebrows above each heading were mostly restating the heading
+   beneath them. Removing them, which also removes the last of the small-caps
+   label pattern from the page. */
+.eyebrow, .heroEyebrow, .perfStripLabel, .entPanelLabel { display: none; }
