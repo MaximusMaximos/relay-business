@@ -3444,3 +3444,26 @@ html { scroll-padding-top: 80px; }
      a gap when they are level, and no effect when they wrap. */
   .creditsInner .creditsCall { margin: 8px 0 0 10px; }
 }
+
+/* The first card lost its left border in the unboxed pass, where the cards were
+   separated by vertical rules and the first needed none. The rule survived when
+   the boxes came back, leaving Agents with three sides. */
+.proofCard:first-child {
+  border-left: 1px solid rgba(232, 238, 255, 0.14);
+  padding-left: 16px;
+}
+
+/* Setting all four sides on every card in one rule, rather than patching
+   individual edges. Several earlier passes removed different borders from
+   :first-child and :last-child for layouts that no longer exist, and the
+   leftovers were showing as missing edges. */
+.proofCard,
+.proofCard:first-child,
+.proofCard:last-child {
+  border-top: 1px solid rgba(232, 238, 255, 0.14);
+  border-right: 1px solid rgba(232, 238, 255, 0.14);
+  border-bottom: 1px solid rgba(232, 238, 255, 0.14);
+  border-left: 1px solid rgba(232, 238, 255, 0.14);
+  padding: 14px 16px 15px;
+  margin: 0;
+}
