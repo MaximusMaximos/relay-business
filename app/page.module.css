@@ -3422,3 +3422,17 @@ html { scroll-padding-top: 80px; }
   .creditsInner .ctaGold { margin-top: 4px; }
   .creditsInner .creditsCall { margin-top: 8px; }
 }
+
+@media (max-width: 900px) {
+  /* Full width made them dominate the panel. Sized to their labels and
+     left-aligned with the text above, so they read as actions rather than as
+     two bars. */
+  .creditsInner .ctaGold,
+  .creditsInner .creditsCall {
+    display: inline-block;
+    width: auto;
+    padding: 9px 18px;
+    font-size: 0.74rem;
+  }
+  .creditsInner .creditsCall { margin-top: 8px; }
+}
