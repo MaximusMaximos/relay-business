@@ -237,23 +237,16 @@ export default function Business() {
                 background: "transparent",
               }}
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/relay-routing.png"
+                alt=""
                 style={{
                   width: "100%",
                   height: "auto",
-                  aspectRatio: "16 / 9",
-                  objectFit: "contain",
                   display: "block",
                 }}
-              >
-                <source src="/relay-routing.mp4" type="video/mp4" />
-              </video>
+              />
             </div>
           </div>
         </div>
@@ -332,23 +325,11 @@ export default function Business() {
     Price per million tokens tells you what a token costs.
     It doesn&rsquo;t tell you what the agent task costs.
   </strong>
+
+  <p className={styles.benchInsightMeta}>
+    <strong>Five models, same workload, same scoring.</strong>
+  </p>
 </div>
-
-        <div className={styles.benchStats}>
-          <div className={styles.benchStat}>
-            <span className={styles.benchStatFigure}>&lt;1s</span>
-            <span className={styles.benchStatLabel}>
-              Direct mode latency
-            </span>
-          </div>
-
-          <div className={styles.benchStat}>
-            <span className={styles.benchStatFigure}>5</span>
-            <span className={styles.benchStatLabel}>
-              models, same workload and scoring
-            </span>
-          </div>
-        </div>
       </div>
     </div>
     {/* Answers the objection the economics provoke: if it is cheaper, is it still

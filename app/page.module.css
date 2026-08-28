@@ -3467,3 +3467,32 @@ html { scroll-padding-top: 80px; }
   padding: 14px 16px 15px;
   margin: 0;
 }
+
+/* ═══ two removals ═══ */
+
+/* The token-price block: unboxed. The copy is the strongest passage on the page
+   and the benchmark above it already establishes the context. A thin rule
+   separates it; the container was adding nothing the rule does not. */
+.benchInsight {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-top: 1px solid var(--line);
+  padding: 24px 0 0;
+}
+
+/* The three media cards: gone. The $155K, $84K and 53% figures all appear as
+   rows in the table directly beneath, with their comparators attached, so the
+   cards were saying the same thing twice in a weaker form.
+
+   Note this was removed once before and restored on request. Removing again
+   per the current direction. */
+.mediaCards { display: none; }
+
+/* Two rules were sitting close together: one above the methodology line and one
+   opening the performance strip. The methodology belongs to the block above it,
+   so it needs no rule of its own — the performance strip's border is the only
+   division needed there. */
+.benchInsightMeta { border-top: none; padding-top: 0; margin-top: 10px; }
+.benchInsight > p:last-of-type { border-bottom: none; }
