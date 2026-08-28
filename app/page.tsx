@@ -234,7 +234,6 @@ export default function Business() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                borderRadius: "24px",
                 background: "transparent",
               }}
             >
@@ -352,7 +351,50 @@ export default function Business() {
         </div>
       </div>
     </div>
-  </div>
+    {/* Answers the objection the economics provoke: if it is cheaper, is it still
+    fast? Tabular data in a table, reusing the page's .table so all three match.
+    TTFT carries the emphasis in one cell via tdSave. */}
+    <div className={styles.perfStrip}>
+      <div className={styles.perfStripHead}>
+        <span className={styles.perfStripLabel}>Performance proof</span>
+        <span className={styles.perfStripTitle}>
+          Lower cost doesn&rsquo;t mean slower inference.
+        </span>
+      </div>
+
+      <table className={styles.table}>
+        <thead>
+          <tr><th>Model</th><th>Hardware</th><th>Metric</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Llama 3.1 8B</td>
+            <td>Tenstorrent N150</td>
+            <td>Time to first token, batch 1</td>
+            <td className={styles.tdSave}>106 ms</td>
+          </tr>
+          <tr>
+            <td>Llama 3.1 8B</td>
+            <td>Tenstorrent N150</td>
+            <td>Aggregate throughput, batch 32</td>
+            <td>813.66 tok/s</td>
+          </tr>
+          <tr>
+            <td>DeepSeek R1</td>
+            <td>Blackhole Galaxy</td>
+            <td>Sustained decode</td>
+            <td>270&ndash;285 tok/s</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p className={styles.perfStripNote}>
+        Measured by the OpenGPU development team on provisioned hardware and
+        production-facing APIs. Single-run post-warmup measurements. Expect
+        approximately 5&ndash;10% run-to-run variance.
+      </p>
+    </div>
+    </div>
 </section>
 
       {/* ═══ 5 · base_url ═══ */}
@@ -419,32 +461,35 @@ export default function Business() {
               below. The samples show what the routes produce; the table is the evidence for
               the savings. */}
           <div className={styles.mediaBlock}>
-            <div className={styles.mediaTop}>
-              <div className={styles.mediaSavings}>
-                <div className={styles.mediaSaving}>
-                  <span className={styles.mediaSavingLabel}>Image, at 5M renders</span>
-                  <span className={styles.mediaSavingFigure}>$155K</span>
-                  <span className={styles.mediaSavingUnit}>$0.077 to $0.046 per image</span>
-                </div>
-                <div className={styles.mediaSaving}>
-                  <span className={styles.mediaSavingLabel}>Video, at 1M renders</span>
-                  <span className={styles.mediaSavingFigure}>$84K</span>
-                  <span className={styles.mediaSavingUnit}>5 sec HappyHorse route</span>
-                </div>
-                <div className={styles.mediaSaving}>
-                  <span className={styles.mediaSavingLabel}>SeeDance 2.5</span>
-                  <span className={styles.mediaSavingFigure}>53%</span>
-                  <span className={styles.mediaSavingUnit}>$21.40 to $10.01 per 1M video tokens</span>
+            <div className={styles.mediaCards}>
+              {/* eslint-disable @next/next/no-img-element */}
+              <div className={styles.mediaCard}>
+                <img src="/image-sample.png" alt="" className={styles.mediaCardImg} />
+                <div className={styles.mediaCardBody}>
+                  <span className={styles.mediaCardFigure}>$155K</span>
+                  <span className={styles.mediaCardLabel}>Image, at 5M renders</span>
+                  <p className={styles.mediaCardNote}>$0.077 to $0.046 per image</p>
                 </div>
               </div>
 
-              <div className={styles.mediaSamples}>
-                {/* eslint-disable @next/next/no-img-element */}
-                <img src="/image-sample.png" alt="" className={styles.mediaSample} />
-                <img src="/video-sample1.png" alt="" className={styles.mediaSample} />
-                <img src="/video-sample2.png" alt="" className={styles.mediaSample} />
-                {/* eslint-enable @next/next/no-img-element */}
+              <div className={styles.mediaCard}>
+                <img src="/video-sample1.png" alt="" className={styles.mediaCardImg} />
+                <div className={styles.mediaCardBody}>
+                  <span className={styles.mediaCardFigure}>$84K</span>
+                  <span className={styles.mediaCardLabel}>Video, at 1M renders</span>
+                  <p className={styles.mediaCardNote}>5 sec HappyHorse route</p>
+                </div>
               </div>
+
+              <div className={styles.mediaCard}>
+                <img src="/video-sample2.png" alt="" className={styles.mediaCardImg} />
+                <div className={styles.mediaCardBody}>
+                  <span className={styles.mediaCardFigure}>53%</span>
+                  <span className={styles.mediaCardLabel}>SeeDance 2.5</span>
+                  <p className={styles.mediaCardNote}>$21.40 to $10.01 per 1M video tokens</p>
+                </div>
+              </div>
+              {/* eslint-enable @next/next/no-img-element */}
             </div>
 
             <table className={styles.table}>
@@ -492,22 +537,6 @@ export default function Business() {
               ))}
             </div>
 
-            <div className={styles.flowChain}>
-              <div className={styles.chainNode}>
-                <span className={styles.chainName}>Providers</span>
-                <span className={styles.chainSub}>negotiated rates</span>
-              </div>
-              <span className={styles.chainLine} aria-hidden="true" />
-              <div className={`${styles.chainNode} ${styles.chainRelay}`}>
-                <span className={styles.chainName}>Relay</span>
-                <span className={styles.chainSub}>same model, lower price</span>
-              </div>
-              <span className={styles.chainLine} aria-hidden="true" />
-              <div className={styles.chainNode}>
-                <span className={styles.chainName}>Your application</span>
-                <span className={styles.chainSub}>unchanged</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

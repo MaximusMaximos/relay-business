@@ -63,27 +63,43 @@ export default function EnterprisePricing() {
             </span>
           </div>
 
-          <div className={styles.entScale}>
-            <div className={styles.entBaseCol}>
-              <span className={styles.entColLabel}>Relay base</span>
-              <span className={styles.entBasePrice}>${BASE.toFixed(2)}</span>
-              <span className={styles.entColNote}>published price</span>
+          <div className={styles.entLadder}>
+            <div className={styles.entLadderBase}>
+              <span className={styles.entLadderBaseLabel}>Relay base</span>
+              <span className={styles.entLadderBaseFigure}>${BASE.toFixed(2)}</span>
+              <span className={styles.entLadderBaseNote}>published price</span>
             </div>
 
-            <span className={styles.entArrow} aria-hidden="true" />
-
-            <div className={styles.entTierRow}>
-              {TIERS.map((t, i) => (
-                <div
-                  key={t.label}
-                  className={`${styles.entTier} ${i === TIERS.length - 1 ? styles.entTierBest : ""}`}
-                >
-                  <span className={styles.entTierVolume}>{t.label}</span>
-                  <span className={styles.entTierPrice}>${t.price.toFixed(3)}</span>
-                  <span className={styles.entTierSaving}>{pctBelow(t.price)}% lower</span>
-                </div>
-              ))}
-            </div>
+            <table className={styles.entLadderTable}>
+              <thead>
+                <tr>
+                  <th>Volume</th>
+                  {TIERS.map((t, i) => (
+                    <th key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
+                      {t.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rate</td>
+                  {TIERS.map((t, i) => (
+                    <td key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
+                      ${t.price.toFixed(3)}
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td>Saving</td>
+                  {TIERS.map((t, i) => (
+                    <td key={t.label} className={i === TIERS.length - 1 ? styles.entLadderBest : ""}>
+                      {pctBelow(t.price)}%
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <p className={styles.entNote}>

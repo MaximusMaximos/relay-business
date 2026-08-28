@@ -2254,3 +2254,1171 @@ html { scroll-padding-top: 80px; }
 @media (prefers-reduced-motion: reduce) {
   .creditsCall:hover { transform: none; }
 }
+/* ═══ performance proof ═══
+   Inside the benchmark section, under the economics. A continuation of the same evidence
+   rather than a new chapter, so it shares the section's width and sits on a rule instead
+   of its own background.
+
+   Three cards of near-equal weight. TTFT leads by a step in colour and size, not by the
+   two-to-one hierarchy a standalone section could carry. */
+
+.perfStrip {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.perfStripHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.perfStripLabel {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+.perfStripTitle { font-size: 0.98rem; font-weight: 600; color: var(--text); }
+
+.perfStripNote {
+  margin: 18px 0 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--dim);
+  max-width: 80ch;
+}
+
+@media (max-width: 900px) {
+  .perfStrip { margin-top: 26px; padding-top: 20px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   EDITORIAL PASS
+
+   The rule: if information can live on the page, it does not go in a card. A
+   card earns its border by being a discrete object, not a paragraph with a
+   rectangle around it.
+
+   This deliberately reverses the "raised panel surface" block above. That
+   treatment is right for relaygpu.com, where the cards hold distinct product
+   facts. Here it was applied to a heading, a code sample and a three-word
+   label, none of which is an object.
+
+   KEEPS ITS CARD: enterprise tiers (four options scanned against each other),
+   the enterprise toggle (a control, must look pressable), hero proof cards
+   (they sit over video and need a readable ground).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.moduleCopy,
+.codeWrap,
+.creditsInner {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.module {
+  border-radius: 0;
+  border: none;
+  overflow: visible;
+  border-top: 1px solid var(--line);
+  padding-top: 46px;
+  gap: 48px;
+}
+.moduleCopy { padding: 0; }
+
+/* The three dots and the "PYTHON" label were a terminal costume. A gold rule
+   and monospace is enough of a frame for four lines of code. */
+.codeBar { display: none; }
+.codeWrap { border-left: 2px solid var(--gold); }
+.code { background: none; padding: 2px 0 2px 26px; }
+
+/* Three mechanisms as editorial columns on thin rules, rather than a list
+   beside an illustration of itself. */
+.flow { display: block; }
+.flowList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.mech {
+  display: block;
+  padding: 26px 32px 8px 0;
+  border-top: none;
+  border-left: 1px solid var(--line);
+  padding-left: 26px;
+}
+.mech:first-child { border-left: none; padding-left: 0; }
+.mech:last-child { border-bottom: none; }
+.mechNum { display: block; margin-bottom: 14px; }
+
+/* Quieter over the video: the figures are the point, not the frame. */
+.proofCard {
+  border-radius: 3px;
+  border: 1px solid rgba(232, 238, 255, 0.07);
+  background: rgba(8, 12, 24, 0.5);
+  box-shadow: none;
+}
+.proofCard:first-child, .proofCard:last-child { border-color: rgba(232, 238, 255, 0.07); }
+.proofTag { border: none; background: none; padding: 0; }
+
+/* Softer corners read as consumer software. What keeps an edge gets a sharp one. */
+.entTier, .entToggle, .entPanel, .entBook, .ctaGold, .ctaGhost,
+.creditsCall, .headerCta, .convergeCta { border-radius: 3px; }
+
+.entTier { background: none; }
+.entTierBest { background: rgba(255, 188, 54, 0.05); }
+.entPanel { background: none; }
+
+@media (max-width: 900px) {
+  .module { padding-top: 30px; gap: 26px; }
+  .flowList { grid-template-columns: 1fr; }
+  .mech { border-left: none; border-top: 1px solid var(--line); padding: 20px 0 4px; }
+  .mech:first-child { padding-left: 0; }
+  .code { padding-left: 18px; }
+}
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS — flat, rectangular, labelled
+
+   The gradient fill, the 3px radius, the drop shadow and the hover lift are
+   the four things that together read as a SaaS template. Individually each is
+   defensible; together they are a signature.
+
+   What replaces them:
+
+     radius 0        a hard rectangle reads as deliberate, a soft one as a
+                     component library default
+     flat colour     no gradient, no shadow, no glow
+     caps + tracking a label rather than a control. This does most of the work
+     dot marker      stands in for the icon that would otherwise appear
+     invert on hover the state change is the colour swapping, not the element
+                     lifting off the page
+
+   Appended last so it wins on source order.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.ctaGold,
+.ctaGhost,
+.ctaInk,
+.headerCta,
+.creditsCall,
+.convergeCta,
+.entBook {
+  border-radius: 0;
+  box-shadow: none;
+  background-image: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+/* Primary. Solid amber, dark text, no gradient. Inverts rather than lifts. */
+.ctaGold {
+  background: var(--gold);
+  color: #0d0a03;
+  padding: 15px 30px;
+  border: 1px solid var(--gold);
+}
+.ctaGold:hover {
+  background: transparent;
+  color: var(--gold);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary. Thin rule, no fill, with the dot marker before the label. */
+.ctaGhost {
+  background: none;
+  border: 1px solid rgba(232, 238, 255, 0.28);
+  color: var(--text);
+  padding: 15px 26px;
+  position: relative;
+}
+.ctaGhost::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 11px;
+  vertical-align: middle;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.ctaGhost:hover { background: rgba(232, 238, 255, 0.05); border-color: var(--text); }
+
+/* Header. Smaller, same language. */
+.headerCta {
+  background: var(--gold);
+  color: #0d0a03;
+  border: 1px solid var(--gold);
+  padding: 9px 18px;
+  font-size: 0.7rem;
+}
+.headerCta:hover { background: transparent; color: var(--gold); }
+
+/* The two green actions keep their colour, since green is carrying the
+   savings meaning, but lose the pill shape and the lift. */
+.creditsCall, .entBook {
+  border-radius: 0;
+  background: none;
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  color: #34d399;
+  padding: 15px 26px;
+}
+.creditsCall:hover, .entBook:hover {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: #34d399;
+  transform: none;
+}
+/* The booking button carries two lines, so the caps treatment applies only to
+   the first. */
+.entBookMain { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.entBookSub { font-size: 0.76rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+
+.convergeCta {
+  border-radius: 0;
+  border: 1px solid rgba(232, 238, 255, 0.2);
+  padding: 13px 24px;
+}
+
+/* The enterprise toggle is a control rather than a call to action, so it keeps
+   its shape but loses the radius to match everything else. */
+.entToggle, .entPanel, .entTier { border-radius: 0; }
+
+/* Eyebrows and labels already use caps; tightening the tracking so they sit in
+   the same family as the buttons rather than being a separate treatment. */
+.eyebrow, .perfStripLabel, .entPanelLabel, .proofTag, .forkQ, .savingLabel,
+.outcomeLabel, .econLabel { letter-spacing: 0.16em; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { padding: 13px 22px; font-size: 0.72rem; }
+  .headerCta { padding: 8px 14px; font-size: 0.66rem; }
+}
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS — flat, rectangular, labelled
+
+   The gradient fill, the 3px radius, the drop shadow and the hover lift are
+   the four things that together read as a SaaS template. Individually each is
+   defensible; together they are a signature.
+
+   What replaces them:
+
+     radius 0        a hard rectangle reads as deliberate, a soft one as a
+                     component library default
+     flat colour     no gradient, no shadow, no glow
+     caps + tracking a label rather than a control. This does most of the work
+     dot marker      stands in for the icon that would otherwise appear
+     invert on hover the state change is the colour swapping, not the element
+                     lifting off the page
+
+   Appended last so it wins on source order.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.ctaGold,
+.ctaGhost,
+.ctaInk,
+.headerCta,
+.creditsCall,
+.convergeCta,
+.entBook {
+  border-radius: 0;
+  box-shadow: none;
+  background-image: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+/* Primary. Solid amber, dark text, no gradient. Inverts rather than lifts. */
+.ctaGold {
+  background: var(--gold);
+  color: #0d0a03;
+  padding: 15px 30px;
+  border: 1px solid var(--gold);
+}
+.ctaGold:hover {
+  background: transparent;
+  color: var(--gold);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary. Thin rule, no fill, with the dot marker before the label. */
+.ctaGhost {
+  background: none;
+  border: 1px solid rgba(232, 238, 255, 0.28);
+  color: var(--text);
+  padding: 15px 26px;
+  position: relative;
+}
+.ctaGhost::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 11px;
+  vertical-align: middle;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.ctaGhost:hover { background: rgba(232, 238, 255, 0.05); border-color: var(--text); }
+
+/* Header. Smaller, same language. */
+.headerCta {
+  background: var(--gold);
+  color: #0d0a03;
+  border: 1px solid var(--gold);
+  padding: 9px 18px;
+  font-size: 0.7rem;
+}
+.headerCta:hover { background: transparent; color: var(--gold); }
+
+/* The two green actions keep their colour, since green is carrying the
+   savings meaning, but lose the pill shape and the lift. */
+.creditsCall, .entBook {
+  border-radius: 0;
+  background: none;
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  color: #34d399;
+  padding: 15px 26px;
+}
+.creditsCall:hover, .entBook:hover {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: #34d399;
+  transform: none;
+}
+/* The booking button carries two lines, so the caps treatment applies only to
+   the first. */
+.entBookMain { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.entBookSub { font-size: 0.76rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+
+.convergeCta {
+  border-radius: 0;
+  border: 1px solid rgba(232, 238, 255, 0.2);
+  padding: 13px 24px;
+}
+
+/* The enterprise toggle is a control rather than a call to action, so it keeps
+   its shape but loses the radius to match everything else. */
+.entToggle, .entPanel, .entTier { border-radius: 0; }
+
+/* Eyebrows and labels already use caps; tightening the tracking so they sit in
+   the same family as the buttons rather than being a separate treatment. */
+.eyebrow, .perfStripLabel, .entPanelLabel, .proofTag, .forkQ, .savingLabel,
+.outcomeLabel, .econLabel { letter-spacing: 0.16em; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { padding: 13px 22px; font-size: 0.72rem; }
+  .headerCta { padding: 8px 14px; font-size: 0.66rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS — flat, rectangular, labelled
+
+   The gradient fill, the 3px radius, the drop shadow and the hover lift are
+   the four things that together read as a SaaS template. Individually each is
+   defensible; together they are a signature.
+
+     radius 0        a hard rectangle reads as deliberate, a soft one as a
+                     component library default
+     flat colour     no gradient, no shadow, no glow
+     caps + tracking a label rather than a control. Does most of the work
+     dot marker      stands in for the icon that would otherwise appear
+     invert on hover the colour swaps rather than the element lifting
+   ═══════════════════════════════════════════════════════════════════ */
+
+.ctaGold, .ctaGhost, .ctaInk, .headerCta,
+.creditsCall, .convergeCta, .entBook {
+  border-radius: 0;
+  box-shadow: none;
+  background-image: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+.ctaGold {
+  background: var(--gold);
+  color: #0d0a03;
+  padding: 15px 30px;
+  border: 1px solid var(--gold);
+}
+.ctaGold:hover {
+  background: transparent;
+  color: var(--gold);
+  transform: none;
+  box-shadow: none;
+}
+
+.ctaGhost {
+  background: none;
+  border: 1px solid rgba(232, 238, 255, 0.28);
+  color: var(--text);
+  padding: 15px 26px;
+}
+.ctaGhost::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  margin-right: 11px;
+  vertical-align: middle;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.ctaGhost:hover { background: rgba(232, 238, 255, 0.05); border-color: var(--text); }
+
+.headerCta {
+  background: var(--gold);
+  color: #0d0a03;
+  border: 1px solid var(--gold);
+  padding: 9px 18px;
+  font-size: 0.7rem;
+}
+.headerCta:hover { background: transparent; color: var(--gold); }
+
+/* Green keeps its savings meaning, loses the pill and the lift. */
+.creditsCall, .entBook {
+  background: none;
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  color: #34d399;
+  padding: 15px 26px;
+}
+.creditsCall:hover, .entBook:hover {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: #34d399;
+  transform: none;
+}
+.entBookMain { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.entBookSub { font-size: 0.76rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+
+.convergeCta { border: 1px solid rgba(232, 238, 255, 0.2); padding: 13px 24px; }
+
+/* A control rather than a call to action: keeps its shape, loses the radius. */
+.entToggle, .entPanel, .entTier { border-radius: 0; }
+
+/* Same family as the buttons rather than a separate treatment. */
+.eyebrow, .perfStripLabel, .entPanelLabel, .proofTag, .forkQ, .savingLabel,
+.outcomeLabel, .econLabel { letter-spacing: 0.16em; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { padding: 13px 22px; font-size: 0.72rem; }
+  .headerCta { padding: 8px 14px; font-size: 0.66rem; }
+}
+
+/* Slimmer. A tall button reads as a touch target; a short one reads as a
+   label, which is the register the rest of the page is now in. */
+.ctaGold { padding: 11px 28px; }
+.ctaGhost { padding: 11px 24px; }
+.creditsCall, .entBook { padding: 11px 24px; }
+.headerCta { padding: 7px 16px; }
+.convergeCta { padding: 10px 22px; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { padding: 10px 20px; }
+  .headerCta { padding: 6px 13px; }
+}
+
+/* Wider and shorter. The ACC buttons work because the proportion is wrong for a
+   UI control and right for a label: generous horizontally, tight vertically. A
+   square-ish rectangle reads as a component; a long thin one reads as type. */
+.ctaGold { padding: 9px 34px; }
+.ctaGhost { padding: 9px 30px; }
+.creditsCall, .entBook { padding: 9px 30px; }
+.headerCta { padding: 6px 20px; }
+.convergeCta { padding: 8px 26px; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { padding: 9px 24px; }
+  .headerCta { padding: 5px 15px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   REFINEMENT PASS — subtraction
+
+   Reference points on this page are now the performance table and the
+   production-scale figures: flat, technical, unboxed. Everything below moves
+   the remaining components toward those two.
+
+   The rule stays: if information can live on the page, it does not go in a
+   card. A card earns its border by being a discrete object.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── hero proof stats: unboxed ──────────────────────────────────────
+   Three floating rectangles over a video was the loudest remaining SaaS
+   signal. The hero video and headline already carry the weight; these are
+   supporting figures and should read as type. */
+.proofCard {
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 0 0 22px;
+  border-left: 1px solid rgba(232, 238, 255, 0.14);
+}
+.proofCard:first-child { border-left: none; padding-left: 0; }
+.proofCard::after { display: none; }
+.proofCards { gap: 34px; }
+.proofTag {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.62rem;
+  color: var(--muted);
+}
+.proofFigure { color: var(--gold); }
+
+/* ── token price panel: unboxed ─────────────────────────────────────
+   The heading and copy sit on the page with one gold rule. The panel around
+   them was adding nothing the rule does not. */
+.benchInsight, .benchNote {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-left: 2px solid var(--gold);
+  padding: 2px 0 2px 22px;
+}
+
+/* ── media saving cards: gone ───────────────────────────────────────
+   The same three figures appear in the table directly beneath. Repeating them
+   in boxes above was filling space, not informing. */
+.mediaSavings { display: none; }
+.mediaTop { grid-template-columns: 1fr; }
+
+/* ── global: radii, shadows, borders ────────────────────────────────
+   Nothing on this page needs a shadow. Borders drop to a low opacity so they
+   separate without drawing attention. */
+.module, .moduleCopy, .codeWrap, .creditsInner, .chainNode, .chainRelay,
+.proofCard, .entTier, .entPanel, .entToggle, .flowNode, .flowEnd,
+.mediaSample, .entExample, .perfHero, .perfCard, .ctaGold, .ctaInk,
+.creditsCall, .entBook, .headerCta { box-shadow: none; }
+.entTier, .entToggle, .entPanel, .entBook, .ctaGold, .ctaGhost,
+.creditsCall, .headerCta, .convergeCta, .mediaSample,
+.codeWrap, .module, .chainNode { border-radius: 2px; }
+
+.entPanel, .entTier, .chainNode, .flowNode { border-color: rgba(232, 238, 255, 0.09); }
+
+/* ── gold restraint ─────────────────────────────────────────────────
+   Gold on the numbers, the primary action and one accent per heading. Not
+   around components. */
+.entToggle { border-color: rgba(52, 211, 153, 0.45); }
+.proofCard:first-child, .proofCard:last-child { border-color: rgba(232, 238, 255, 0.14); }
+.entTierBest { border-color: rgba(255, 188, 54, 0.4); background: rgba(255, 188, 54, 0.04); }
+
+/* ── eyebrows: fewer, quieter ───────────────────────────────────────
+   Where a heading already says what the section is, the caps label above it is
+   repeating itself. */
+.eyebrow { font-size: 0.66rem; color: var(--dim); margin-bottom: 18px; }
+.perfStripLabel { color: var(--dim); }
+
+@media (max-width: 900px) {
+  .proofCards { gap: 0; }
+  .proofCard { border-left: none; border-top: 1px solid rgba(232, 238, 255, 0.1); padding: 14px 0 0; }
+  .proofCard:first-child { border-top: none; padding-top: 0; }
+}
+
+/* ── enterprise pricing ladder ──────────────────────────────────────
+   A commercial pricing sheet rather than a pricing widget. Base on the left,
+   tiers as columns, rate and saving as rows. Only the strongest tier carries a
+   mark; decorating every cell is what made the cards read as generated. */
+.entLadder { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 34px; align-items: center; }
+.entLadderBase { display: flex; flex-direction: column; gap: 4px; padding-right: 30px; border-right: 1px solid var(--line); }
+.entLadderBaseLabel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--dim); }
+.entLadderBaseFigure { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); }
+.entLadderBaseNote { font-size: 0.7rem; color: var(--dim); }
+
+.entLadderTable { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.entLadderTable th {
+  text-align: right;
+  padding: 0 14px 12px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+.entLadderTable th:first-child, .entLadderTable td:first-child { text-align: left; color: var(--dim); font-size: 0.78rem; }
+.entLadderTable td { text-align: right; padding: 13px 14px; border-bottom: 1px solid var(--lineSoft, #131a2c); color: var(--muted); }
+.entLadderTable tbody tr:last-child td { border-bottom: none; }
+.entLadderBest { color: var(--gold) !important; font-weight: 650; }
+
+@media (max-width: 900px) {
+  .entLadder { grid-template-columns: 1fr; gap: 18px; }
+  .entLadderBase { padding: 0 0 16px; border-right: none; border-bottom: 1px solid var(--line); }
+  .entLadderTable { font-size: 0.8rem; }
+  .entLadderTable td, .entLadderTable th { padding: 9px 8px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DENSITY
+
+   The reference gets its confidence from tightness: a hairline between rows
+   rather than a gap, copy sitting immediately under its heading, and the
+   content starting directly beneath the section title.
+
+   Generous spacing reads as calm when the content is sparse and as filler when
+   it is not. This page has a lot to say, so it should sit closer together.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Sections. 56px each end was 112px between the last line of one and the first
+   of the next. */
+.deep, .navy, .credits { padding: 46px 0; }
+.deepOpen { padding: 46px 0 0; }
+.deep + .deep, .navy + .navy { padding-top: 16px; }
+
+/* Heading to content. The type size already separates them. */
+.headBlock { margin-bottom: 24px; }
+.h2 { margin-bottom: 12px; }
+.lede { line-height: 1.55; }
+
+/* Rows sit on rules rather than in space. */
+.mech { padding: 20px 26px 6px 0; }
+.mech:first-child { padding-left: 0; }
+.plainList li { padding: 10px 0; }
+.table td { padding: 11px 14px; }
+.table thead th { padding: 0 14px 10px; }
+.entLadderTable td { padding: 10px 14px; }
+
+/* Blocks within a section. */
+.benchTop { padding-bottom: 18px; margin-bottom: 18px; }
+.benchLayout { gap: 30px; }
+.perfStrip { margin-top: 26px; padding-top: 20px; }
+.perfStripHead { margin-bottom: 14px; }
+.perfStripNote { margin-top: 14px; }
+.savings { gap: 34px; }
+.savingDetail { margin-top: 8px; padding-top: 12px; }
+.footnote { margin-top: 24px; }
+.module { padding-top: 34px; gap: 38px; }
+.fork { margin-bottom: 40px; }
+.converge { padding-top: 34px; }
+.entWrap { margin-top: 10px; }
+.entPanel { padding: 20px 18px 18px; }
+.entNote { margin-top: 16px; padding-top: 14px; }
+.entKicker { margin-top: 8px; }
+.creditsStrong { margin-bottom: 8px; }
+.creditsBody { margin-bottom: 8px; }
+.creditsKicker { margin-bottom: 26px; }
+.mediaBlock { margin-top: 26px; padding-top: 22px; }
+
+/* Close. It is the one place air is doing work, so it keeps more than the
+   rest. */
+.close { padding: 74px 0; }
+
+@media (max-width: 900px) {
+  .deep, .navy, .credits { padding: 34px 0; }
+  .deepOpen { padding: 34px 0 0; }
+  .close { padding: 52px 0; }
+  .headBlock { margin-bottom: 18px; }
+}
+
+/* The saving cards were hidden, so the sample images inherited the full width
+   and scaled up. Capped and pushed left rather than stretched: they are
+   illustration, not evidence, and the table below is the substance. */
+.mediaSamples {
+  max-width: 520px;
+  gap: 8px;
+}
+.mediaSample { aspect-ratio: 16 / 10; border-radius: 2px; }
+
+/* The routing video was sized against a two-column module that no longer has a
+   card around it. */
+.module video { max-height: 340px; }
+
+/* Right-aligned. With the saving cards gone the block sits alone, and pushing
+   it right gives the section an asymmetry rather than another left-aligned
+   stack. */
+.mediaSamples { margin-left: auto; }
+
+/* Restored. The figures land before the table does, which the table alone
+   cannot do. Unboxed and on a rule, consistent with the rest of the page. */
+.mediaSavings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.mediaTop { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+.mediaSaving {
+  border: none;
+  background: none;
+  border-radius: 0;
+  padding: 0 0 0 20px;
+  border-left: 1px solid var(--line);
+}
+.mediaSaving:first-child { border-left: none; padding-left: 0; }
+.mediaSavingLabel { color: var(--dim); }
+.mediaSavingFigure { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .mediaSavings { grid-template-columns: 1fr; gap: 0; }
+  .mediaSaving { border-left: none; border-top: 1px solid var(--line); padding: 14px 0 0; }
+  .mediaSaving:first-child { border-top: none; padding-top: 0; }
+}
+
+/* ═══ media cards ═══
+   Surface on top, text beneath. The card earns its border here because the top
+   two-thirds holds something real rather than an icon standing in for one. */
+.mediaCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.mediaCard {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mediaCardImg {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  /* Separated from the text rather than bleeding into it, which is what keeps
+     the card reading as two zones rather than one gradient. */
+  border-bottom: 1px solid var(--line);
+}
+.mediaCardBody { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 3px; }
+.mediaCardFigure {
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: var(--gold);
+}
+.mediaCardLabel { font-size: 0.86rem; font-weight: 600; color: var(--text); margin-top: 6px; }
+.mediaCardNote { margin: 2px 0 0; font-size: 0.76rem; line-height: 1.4; color: var(--dim); }
+
+@media (max-width: 900px) {
+  .mediaCards { grid-template-columns: 1fr; gap: 10px; }
+  .mediaCardBody { padding: 14px 16px 16px; }
+  .mediaCardFigure { font-size: 1.35rem; }
+}
+
+/* Shorter crop. The figure is the point of the card and the image is context,
+   so the text should get more of the height than it was. */
+.mediaCardImg { aspect-ratio: 16 / 7; }
+
+@media (max-width: 900px) {
+  .mediaCardImg { aspect-ratio: 16 / 6; }
+}
+
+/* Flatter still: a band of context above the figure rather than an image with
+   a caption. Below about 16/4 the crop starts losing whatever the still was of. */
+.mediaCardImg { aspect-ratio: 16 / 4.5; }
+
+@media (max-width: 900px) {
+  .mediaCardImg { aspect-ratio: 16 / 4; }
+}
+
+/* The image is an object inside the card, not the card's lid. Original 16:10
+   proportion, inset with padding so the card's background shows around it and
+   it reads as a sample rather than a header. */
+.mediaCardImg {
+  aspect-ratio: 16 / 10;
+  width: 62%;
+  margin: 20px 20px 0;
+  border: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 2px;
+  object-fit: cover;
+}
+.mediaCardBody { padding: 16px 20px 20px; }
+
+@media (max-width: 900px) {
+  .mediaCardImg { width: 48%; margin: 16px 16px 0; aspect-ratio: 16 / 10; }
+}
+
+/* ═══ hero proof cards, restored ═══
+   The glass is back because it works over video: the blur gives the figures a
+   ground without hiding what is behind them. What goes is the softness — the
+   rounded corners, the amber edge, the inset highlight and the drop shadow —
+   which is what made them read as floating panels rather than as part of the
+   composition. */
+.proofCard {
+  border-radius: 0;
+  border: 1px solid rgba(232, 238, 255, 0.14);
+  border-left: 1px solid rgba(232, 238, 255, 0.14);
+  background: rgba(8, 12, 24, 0.42);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  box-shadow: none;
+  padding: 18px 20px 20px;
+}
+.proofCard:first-child { padding-left: 20px; }
+.proofCards { gap: 12px; }
+
+/* The gradient inside earned its place: the video is dark at the foot of the
+   frame and the detail line would otherwise sit on nothing. */
+.proofCard::after {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 60%;
+  background: linear-gradient(180deg, transparent, rgba(6, 9, 20, 0.55));
+  pointer-events: none;
+}
+.proofCard { position: relative; }
+.proofCard > * { position: relative; z-index: 1; }
+
+@media (max-width: 900px) {
+  .proofCard { border: 1px solid rgba(232, 238, 255, 0.12); padding: 14px 16px 16px; }
+  .proofCards { gap: 8px; }
+}
+
+/* ═══ token price panel ═══
+   The one piece of extended prose on the page and the most interesting finding
+   in the section: a cheaper token price costing twice as much per task. On a
+   bare rule it read as a footnote.
+
+   Darker rather than glass, because there is nothing behind it to blur and
+   backdrop-filter over a flat section produces a tinted rectangle pretending to
+   be glass. Same square edge and hairline border as the hero cards, so it
+   belongs to the same family without imitating them. */
+.benchInsight {
+  background: rgba(4, 7, 14, 0.55);
+  border: 1px solid rgba(232, 238, 255, 0.09);
+  border-left: 2px solid var(--gold);
+  border-radius: 0;
+  padding: 22px 24px 20px;
+}
+.benchInsightLabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin: 0 0 14px;
+}
+.benchInsight p { margin: 0 0 12px; font-size: 0.92rem; line-height: 1.62; color: var(--muted); }
+.benchInsight p:last-child { margin-bottom: 0; }
+/* The closing line is the argument, so it reads as a statement rather than as
+   another paragraph. */
+.benchInsight p:last-child, .benchInsight strong { color: var(--text); font-weight: 600; }
+
+/* Gold rule removed from both. The panel's own edge is enough separation, and
+   gold on a border is decoration rather than emphasis: it belongs on the
+   figures, which is where the eye should go in this section. */
+.benchInsight { border-left: 1px solid rgba(232, 238, 255, 0.09); }
+.benchNote { border-left: 1px solid rgba(232, 238, 255, 0.18); }
+.benchInsightLabel { color: var(--dim); }
+
+/* ═══ free credits panel ═══
+   The offer is the one thing on the page that asks for something rather than
+   proving something, so it earns a surface of its own. Same treatment as the
+   benchmark insight: darker than the section, square, hairline border. */
+.creditsInner {
+  background: rgba(4, 7, 14, 0.5);
+  border: 1px solid rgba(232, 238, 255, 0.09);
+  border-radius: 0;
+  padding: 34px 38px 32px;
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .creditsInner { padding: 24px 20px 22px; }
+}
+
+/* Two doors to the same offer, so they sit level with real space between them
+   rather than stacked. Wrapping is allowed, since the second label is long. */
+.creditsInner .ctaGold,
+.creditsInner .creditsCall {
+  display: inline-block;
+  vertical-align: middle;
+}
+.creditsCall { margin-left: 0; }
+.creditsCtas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+@media (max-width: 900px) {
+  .creditsCtas { flex-direction: column; align-items: stretch; gap: 10px; }
+}
+
+/* Stacked with a gap. The wrapper never landed, so a flex row is not available
+   without a markup change; spacing them properly is the honest version of what
+   the layout can do as it stands. */
+.creditsInner .ctaGold { margin-top: 24px; }
+.creditsInner .creditsCall { margin-top: 14px; }
+
+/* Body text down a step. At 0.96rem it was sized for a marketing page; this
+   reads as a document, and a document sets its body copy smaller than its
+   headings suggest. */
+.lede { font-size: 0.88rem; line-height: 1.6; }
+.bodyDark { font-size: 0.88rem; }
+.mechBody { font-size: 0.85rem; }
+.creditsBody { font-size: 0.86rem; }
+.creditsKicker { font-size: 0.9rem; }
+.creditsStrong { font-size: 1rem; }
+.benchInsight p { font-size: 0.85rem; }
+.benchNote { font-size: 0.88rem; }
+.forkNote { font-size: 0.85rem; }
+.savingDetail, .outcomeDetail, .mediaCardNote { font-size: 0.76rem; }
+.footnote, .perfStripNote, .entNote, .entKicker { font-size: 0.75rem; }
+.table, .entLadderTable { font-size: 0.86rem; }
+.plainList li { font-size: 0.88rem; }
+
+@media (max-width: 900px) {
+  .lede, .bodyDark { font-size: 0.85rem; }
+}
+
+/* Another step down, and tighter leading. The reference sits around 14px with
+   1.5 line-height; ours was reading larger because of both. */
+.lede, .bodyDark { font-size: 0.82rem; line-height: 1.55; }
+.mechBody, .forkNote, .benchInsight p { font-size: 0.8rem; line-height: 1.55; }
+.creditsBody { font-size: 0.8rem; line-height: 1.55; }
+.benchNote { font-size: 0.82rem; line-height: 1.55; }
+.plainList li { font-size: 0.82rem; }
+.table, .entLadderTable { font-size: 0.8rem; }
+.savingDetail, .outcomeDetail, .mediaCardNote, .proofDetail { font-size: 0.72rem; line-height: 1.45; }
+.footnote, .perfStripNote, .entNote, .entKicker { font-size: 0.72rem; line-height: 1.5; }
+.heroLede { font-size: 0.88rem; line-height: 1.5; }
+
+/* The hero cards were sized for content that is a figure and two short lines.
+   Tighter padding and the text closer to the number. */
+.proofCard { padding: 14px 16px 15px; }
+.proofFigure { font-size: 1.9rem; }
+.proofTag { font-size: 0.58rem; }
+.proofDetail { margin-top: 5px; }
+
+/* Same surface as the benchmark insight and the credits panel: darker than the
+   section, square, hairline border. Three panels on the page now share one
+   treatment, which is what makes them read as a system rather than as three
+   separate decisions. */
+.codeWrap {
+  background: rgba(4, 7, 14, 0.55);
+  border: 1px solid rgba(232, 238, 255, 0.09);
+  border-left: 1px solid rgba(232, 238, 255, 0.09);
+  border-radius: 0;
+}
+.code { background: none; padding: 20px 22px; }
+
+/* ═══ house style ═══
+   Matching relaygpu.com rather than the editorial reference. Rounded, a lighter
+   fill than the section, faint border, generous padding, subtle top highlight.
+
+   Note this reverses part of the editorial pass: the two directions genuinely
+   conflict, and consistency with the main site wins for anything a customer
+   sees on both. */
+.benchInsight, .creditsInner, .codeWrap, .mediaCard, .entPanel {
+  background: linear-gradient(180deg, rgba(23, 32, 56, 0.5), rgba(11, 16, 30, 0.75));
+  border: 1px solid rgba(232, 238, 255, 0.07);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(232, 238, 255, 0.06);
+  padding: 28px 30px;
+}
+.code { padding: 0; background: none; }
+.mediaCard { padding: 0; overflow: hidden; }
+.mediaCardBody { padding: 20px 22px 22px; }
+
+/* Their headings sit around 1.1rem semibold white, body 0.9rem grey at 1.6. */
+.benchInsightLabel { font-size: 1.05rem; font-weight: 650; color: var(--text); text-transform: none; letter-spacing: -0.01em; margin-bottom: 12px; }
+.benchInsight p, .creditsBody, .lede, .bodyDark { font-size: 0.9rem; line-height: 1.6; }
+.mechBody, .forkNote { font-size: 0.88rem; line-height: 1.6; }
+.mediaCardLabel { font-size: 0.95rem; font-weight: 650; }
+.mediaCardNote { font-size: 0.82rem; line-height: 1.55; }
+
+/* ═══ CTAs, house style ═══
+   Matching relaygpu.com: amber gradient primary, dark filled secondary, rounded,
+   sentence case. This reverses the flat/square/caps treatment applied earlier —
+   the two directions conflict and the main site wins for consistency. */
+.ctaGold, .ctaGhost, .headerCta, .creditsCall, .entBook, .convergeCta {
+  border-radius: 8px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.ctaGold {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  color: #17120a;
+  border: none;
+  padding: 13px 26px;
+}
+.ctaGold:hover { filter: brightness(1.05); background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%); color: #17120a; }
+
+.ctaGhost {
+  background: rgba(13, 19, 34, 0.9);
+  border: 1px solid rgba(232, 238, 255, 0.12);
+  color: var(--text);
+  padding: 13px 24px;
+}
+.ctaGhost::before { display: none; }
+.ctaGhost:hover { background: rgba(20, 28, 48, 0.95); border-color: rgba(232, 238, 255, 0.2); }
+
+.headerCta {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  color: #17120a;
+  border: none;
+  padding: 8px 18px;
+  font-size: 0.84rem;
+}
+.headerCta:hover { filter: brightness(1.05); color: #17120a; }
+
+.creditsCall, .entBook, .convergeCta {
+  background: rgba(13, 19, 34, 0.9);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #34d399;
+  padding: 13px 24px;
+}
+.entBookMain { font-size: 0.92rem; text-transform: none; letter-spacing: 0; }
+
+/* Matched to relaygpu.com: ~44px tall, 0.85rem label. Ours were running larger
+   on both counts, which is what made them read as bigger rectangles. */
+.ctaGold, .ctaGhost, .creditsCall, .entBook, .convergeCta {
+  font-size: 0.85rem;
+  padding: 11px 22px;
+}
+.headerCta { font-size: 0.8rem; padding: 7px 15px; }
+.entBookMain { font-size: 0.85rem; }
+.entBookSub { font-size: 0.72rem; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { font-size: 0.8rem; padding: 10px 18px; }
+  .headerCta { font-size: 0.75rem; padding: 6px 13px; }
+}
+
+/* The two buttons were touching once they went inline. Margin on the second is
+   the only lever without a wrapper in the markup. */
+.creditsInner .creditsCall { margin-left: 12px; margin-top: 0; }
+.creditsInner .ctaGold { margin-top: 26px; }
+
+/* Inline elements align on the text baseline, so buttons with different border
+   widths sit at different heights. Aligning on the box instead. */
+.creditsInner .ctaGold,
+.creditsInner .creditsCall {
+  vertical-align: top;
+  display: inline-block;
+}
+
+/* Both need the same top margin, or aligning their boxes just aligns them at
+   different starting points. */
+.creditsInner .creditsCall { margin-top: 26px; }
+
+/* Green belongs to the two booking actions, where it carries the savings
+   meaning. The homepage link is neither, and it got swept in with them. */
+.convergeCta {
+  background: rgba(13, 19, 34, 0.9);
+  border: 1px solid rgba(232, 238, 255, 0.12);
+  color: var(--text);
+}
+.convergeCta:hover { background: rgba(20, 28, 48, 0.95); border-color: rgba(232, 238, 255, 0.22); color: var(--text); }
+
+/* The bold lines were sitting a step above the body copy they bracket, which
+   made the panel read as three different sizes. */
+.creditsStrong { font-size: 0.95rem; line-height: 1.5; }
+.creditsKicker { font-size: 0.88rem; line-height: 1.5; }
+
+/* The longest prose block on the page, so it benefits most from coming down a
+   step. The heading too: it was sized like a section title when it is a label
+   on a panel. */
+.benchInsightLabel { font-size: 0.95rem; margin-bottom: 10px; }
+.benchInsight p { font-size: 0.84rem; line-height: 1.6; margin-bottom: 10px; }
+.benchInsight p:last-child { font-size: 0.88rem; }
+
+/* The production-scale figures were sized as display type on a page that has
+   since come down a step everywhere else. Smaller keeps them dominant in their
+   own section without shouting across the whole page. */
+.savingFigure { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+.savingLabel { font-size: 0.7rem; }
+.savingDetail { font-size: 0.75rem; }
+
+@media (max-width: 900px) {
+  .savingFigure { font-size: 1.6rem; }
+}
+
+/* Down another step. relaygpu.com's labels sit around 0.8rem, and ours were
+   still reading larger. */
+.ctaGold, .ctaGhost, .creditsCall, .entBook, .convergeCta {
+  font-size: 0.78rem;
+  padding: 10px 20px;
+}
+.headerCta { font-size: 0.74rem; padding: 6px 14px; }
+.entBookMain { font-size: 0.78rem; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { font-size: 0.75rem; padding: 9px 16px; }
+  .headerCta { font-size: 0.7rem; padding: 5px 12px; }
+}
+
+/* Smaller again. Below about 0.7rem a button label stops reading as a control
+   and starts reading as fine print, so this is close to the floor. */
+.ctaGold, .ctaGhost, .creditsCall, .entBook, .convergeCta {
+  font-size: 0.72rem;
+  padding: 9px 18px;
+}
+.headerCta { font-size: 0.7rem; padding: 6px 13px; }
+.entBookMain { font-size: 0.72rem; }
+
+@media (max-width: 900px) {
+  .ctaGold, .ctaGhost, .creditsCall, .entBook { font-size: 0.7rem; padding: 8px 15px; }
+}
+
+/* No :active state was defined, so the browser applied its own on click. The
+   pressed state should be a slightly deeper version of the button, not a
+   different colour entirely. */
+.headerCta:active,
+.ctaGold:active {
+  background: linear-gradient(135deg, #f5c96f 0%, #eaa82c 45%, #d88f18 100%);
+  color: #17120a;
+  filter: none;
+}
+.ctaGhost:active, .convergeCta:active { background: rgba(28, 38, 60, 0.95); }
+.creditsCall:active, .entBook:active { background: rgba(52, 211, 153, 0.14); }
+
+/* Safari also applies a tap highlight on touch, which shows as a grey flash. */
+.ctaGold, .ctaGhost, .headerCta, .creditsCall, .entBook, .convergeCta {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Three earlier rules set .headerCta:hover to a transparent background, from
+   the inverting-button treatment that has since been replaced. On a dark header
+   that reads as the button going black. The house style brightens rather than
+   inverts. */
+.headerCta:hover {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  color: #17120a;
+  filter: brightness(1.06);
+}
+.ctaGold:hover {
+  background: linear-gradient(135deg, #ffd98f 0%, var(--gold) 45%, #f0a020 100%);
+  color: #17120a;
+  filter: brightness(1.06);
+}
+
+@media (max-width: 900px) {
+  /* The desktop margins left a large gap above the buttons and another below,
+     so the panel ended mostly empty. Tighter throughout, and the two buttons
+     stack full width rather than centred with space between them. */
+  .creditsInner { padding: 24px 20px 24px; }
+  .creditsKicker { margin-bottom: 20px; }
+  .creditsInner .ctaGold,
+  .creditsInner .creditsCall {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .creditsInner .ctaGold { margin-top: 4px; }
+  .creditsInner .creditsCall { margin-top: 8px; }
+}
