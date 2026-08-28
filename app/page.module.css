@@ -3436,3 +3436,11 @@ html { scroll-padding-top: 80px; }
   }
   .creditsInner .creditsCall { margin-top: 8px; }
 }
+
+@media (max-width: 900px) {
+  /* The two buttons are inline, so they sit side by side whenever the width
+     allows and stack when it does not. Around 505px they fit and touch, which
+     is a width real phones land on. Margin on the second covers both cases:
+     a gap when they are level, and no effect when they wrap. */
+  .creditsInner .creditsCall { margin: 8px 0 0 10px; }
+}
